@@ -1,4 +1,4 @@
-package com.example.flutter_protector
+package com.puzzletak.flutter_protector
 
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel

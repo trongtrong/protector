@@ -15,6 +15,40 @@ class MockFlutterProtectorPlatform
   Future<bool?> isEmulator() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<String?> getLocalIpAddress() {
+    throw UnimplementedError();
+  }
+  @override
+  Future<bool?> checkForSniffingApps(List<String> sniffingAppsToCheck) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> isProxySet() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> isPublicIP() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> isVpnConnected() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> isVpnUsingNetworkInterface() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> isDeviceRooted() {
+    throw UnimplementedError();
+  }
 }
 
 void main() {

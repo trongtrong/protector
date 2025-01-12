@@ -25,7 +25,64 @@ class FlutterProtectorWeb extends FlutterProtectorPlatform {
   }
 
   @override
-  Future<bool> isEmulator() async {
-    throw UnimplementedError('not found emulator');
+  /// Checks if the current device is running on an emulator.
+  /// Returns `true` if the device is an emulator, otherwise `false`.
+  Future<bool?> isEmulator() async {
+    // TODO: Implement logic to detect if the device is an emulator.
+    throw UnimplementedError('Emulator detection has not been implemented.');
   }
+
+  @override
+  /// Determines if the device is connected to a VPN.
+  /// Returns `true` if a VPN connection is detected, otherwise `false`.
+  Future<bool?> isVpnConnected() async {
+    // TODO: Implement logic to detect if the device is connected to a VPN.
+    throw UnimplementedError('VPN detection has not been implemented.');
+  }
+
+  @override
+  /// Checks if a proxy is set on the device.
+  /// Returns `true` if a proxy configuration is detected, otherwise `false`.
+  Future<bool?> isProxySet() async {
+    // TODO: Implement logic to detect if a proxy is set.
+    throw UnimplementedError('Proxy detection has not been implemented.');
+  }
+
+  @override
+  /// Retrieves the local IP address of the device.
+  /// Returns the local IP address as a string.
+  Future<String?> getLocalIpAddress() async {
+    // TODO: Implement logic to fetch the local IP address.
+    throw UnimplementedError('Local IP address retrieval has not been implemented.');
+  }
+
+  @override
+  /// Checks if the device is using a public IP address.
+  /// Returns `true` if the IP is public, otherwise `false`.
+  Future<bool?> isPublicIP() async {
+    // TODO: Implement logic to detect if the device has a public IP.
+    throw UnimplementedError('Public IP check has not been implemented.');
+  }
+  @override
+  /// Checks if the device is using a public IP address.
+  /// Returns `true` if the IP is public, otherwise `false`.
+  Future<bool?> isDeviceRooted() async {
+    // TODO: Implement logic to detect if the device has a public IP.
+    throw UnimplementedError('Public IP check has not been implemented.');
+  }
+  @override
+  Future<bool?> checkForSniffingApps(List<String> sniffingAppsToCheck) async {
+    // TODO: Implement logic to detect if the device has a public IP.
+    throw UnimplementedError('Public IP check has not been implemented.');
+  }
+
+  @override
+  /// Determines if a VPN is being used by analyzing the network interface.
+  /// Returns `true` if a VPN is detected, otherwise `false`.
+  Future<bool?> isVpnUsingNetworkInterface() async {
+    // TODO: Implement logic to detect if the network interface is using a VPN.
+    throw UnimplementedError('VPN network interface detection has not been implemented.');
+  }
+
+
 }

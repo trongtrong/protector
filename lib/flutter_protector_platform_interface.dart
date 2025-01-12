@@ -23,12 +23,53 @@ abstract class FlutterProtectorPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-
   Future<bool?> isEmulator() async {
-    throw UnimplementedError('not found emulator');
+    // TODO: Implement logic to detect if the device is an emulator.
+    throw UnimplementedError('Emulator detection has not been implemented.');
+  }
+
+  Future<bool?> isDeviceRooted() async {
+    // TODO: Implement logic to detect if the device is an emulator.
+    throw UnimplementedError('Emulator detection has not been implemented.');
+  }
+
+  Future<bool?> checkForSniffingApps(List<String> sniffingAppsToCheck ) async {
+    // TODO: Implement logic to detect if the device is an emulator.
+    throw UnimplementedError('Emulator detection has not been implemented.');
   }
 
   Future<String?> getPlatformVersion() {
+    // TODO: Implement logic to fetch platform version.
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+
+  Future<bool?> isVpnConnected() async {
+    // TODO: Implement logic to detect if the device is connected to a VPN.
+    throw UnimplementedError('VPN detection has not been implemented.');
+  }
+
+
+  Future<bool?> isProxySet() async {
+    // TODO: Implement logic to detect if a proxy is set.
+    throw UnimplementedError('Proxy detection has not been implemented.');
+  }
+
+  Future<String?> getLocalIpAddress() async {
+    // TODO: Implement logic to fetch the local IP address.
+    throw UnimplementedError('Local IP address retrieval has not been implemented.');
+  }
+
+
+  Future<bool?> isPublicIP() async {
+    // TODO: Implement logic to detect if the device has a public IP.
+    throw UnimplementedError('Public IP check has not been implemented.');
+  }
+
+
+  Future<bool?> isVpnUsingNetworkInterface() async {
+    // TODO: Implement logic to detect if the network interface is using a VPN.
+    throw UnimplementedError('VPN network interface detection has not been implemented.');
+  }
+
 }

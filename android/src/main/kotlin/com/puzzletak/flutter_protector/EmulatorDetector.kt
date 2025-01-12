@@ -1,4 +1,4 @@
-package com.example.flutter_protector
+package com.puzzletak.flutter_protector
 
 import android.content.Context
 import android.hardware.Sensor

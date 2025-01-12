@@ -1,19 +1,23 @@
 name: flutter_protector
-description: "A new Flutter project."
-version: 0.0.1
-homepage:
-
+description: A Flutter plugin that provides device and platform-related security features. # Improve the description
+version: 0.0.1+1 # Use semantic versioning (major.minor.patch+build_number)
+homepage: https://github.com/PuzzleTakX/flutter_protector # Add your repo URL
+repository: https://github.com/PuzzleTakX/flutter_protector
+issue_tracker: https://github.com/PuzzleTakX/flutter_protector/issues # Optional: Link to your issue tracker
+documentation: https://github.com/PuzzleTakX/flutter_protector/blob/main/README.md # Optional: Link to documentation
+license: MIT # Add a license
 environment:
-  sdk: ^3.6.0
-  flutter: '>=3.3.0'
+  sdk: '>=3.0.0 <4.0.0' # Adjust SDK constraint if needed
+  flutter: '>=3.0.0' # Adjust Flutter constraint if needed
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  web: ^0.5.1
+  web: ^1.0.0
   plugin_platform_interface: ^2.1.8
+  device_info_plus: ^11.2.0
 
 dev_dependencies:
   flutter_test:
@@ -22,14 +26,11 @@ dev_dependencies:
 
 
 flutter:
-
   plugin:
     platforms:
       android:
-        package: com.example.flutter_protector
-        pluginClass: FlutterProtectorPlugin
-      ios:
-        pluginClass: FlutterProtectorPlugin
+        package: com.puzzletak.flutter_protector # Update with your package name
+        pluginClass: FlutterProtectorPlugin # Update with your plugin class name
       web:
         pluginClass: FlutterProtectorWeb
         fileName: flutter_protector_web.dart

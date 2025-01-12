@@ -31,6 +31,6 @@ flutter:
       android:
         package: com.puzzletak.flutter_protector # Update with your package name
         pluginClass: FlutterProtectorPlugin # Update with your plugin class name
-      web:
-        pluginClass: FlutterProtectorWeb
-        fileName: flutter_protector_web.dart
+#      web:
+#        pluginClass: FlutterProtectorWeb
+#        fileName: flutter_protector_web.dart

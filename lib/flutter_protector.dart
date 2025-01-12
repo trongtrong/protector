@@ -1,5 +1,5 @@
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter_protector/target_platform_protector.dart';
+// import 'package:device_info_plus/device_info_plus.dart';
+// import 'package:flutter_protector/target_platform_protector.dart';
 
 import 'flutter_protector_platform_interface.dart';
 
@@ -11,30 +11,30 @@ class FlutterProtector {
     return FlutterProtectorPlatform.instance.getPlatformVersion();
   }
 
-  /// Gets the target platform for web launch mode.
-  /// This method uses `DeviceInfoPlugin` to get web browser information and attempts to 
-  /// map it to a corresponding `TargetPlatformProtector` enum value based on the platform string.
-  /// 
-  /// **Note:** This approach might not be entirely reliable for web launch mode detection, 
-  /// and a more robust solution might be needed depending on your specific requirements.
-  Future<TargetPlatformProtector> get targetPlatformWebLaunchMode async {
-    final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-    final webLaunch = await deviceInfoPlugin.webBrowserInfo;
-
-    switch (webLaunch.platform) {
-      case "Win32":
-        return TargetPlatformProtector.linux;
-      case "MacIntel":
-        return TargetPlatformProtector.macOS;
-      case "Linux aarch64":
-      case "arm":
-        return TargetPlatformProtector.android;
-      case "iPhone":
-        return TargetPlatformProtector.ios;
-      default:
-        return TargetPlatformProtector.unknown;
-    }
-  }
+  // /// Gets the target platform for web launch mode.
+  // /// This method uses `DeviceInfoPlugin` to get web browser information and attempts to
+  // /// map it to a corresponding `TargetPlatformProtector` enum value based on the platform string.
+  // ///
+  // /// **Note:** This approach might not be entirely reliable for web launch mode detection,
+  // /// and a more robust solution might be needed depending on your specific requirements.
+  // Future<TargetPlatformProtector> get targetPlatformWebLaunchMode async {
+  //   final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+  //   final webLaunch = await deviceInfoPlugin.webBrowserInfo;
+  //
+  //   switch (webLaunch.platform) {
+  //     case "Win32":
+  //       return TargetPlatformProtector.linux;
+  //     case "MacIntel":
+  //       return TargetPlatformProtector.macOS;
+  //     case "Linux aarch64":
+  //     case "arm":
+  //       return TargetPlatformProtector.android;
+  //     case "iPhone":
+  //       return TargetPlatformProtector.ios;
+  //     default:
+  //       return TargetPlatformProtector.unknown;
+  //   }
+  // }
 
   /// Checks if the device is running on an emulator.
   /// This method delegates the call to the platform-specific implementation.

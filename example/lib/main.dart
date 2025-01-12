@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_protector/flutter_protector.dart';
-import 'package:flutter_protector/target_platform_protector.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

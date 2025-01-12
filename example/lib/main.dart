@@ -121,7 +121,7 @@ class _MyAppState extends State<MyApp> {
               Text('Local IP Address: $_localIpAddress\n'),
               Text('Is Public IP: $_isPublicIP\n'),
               Text('Is VPN Using Network Interface: $_isVpnUsingNetworkInterface\n'),
-              Text('Target Platform Web Launch Mode: $_targetPlatformWebLaunchMode\n'),
+              // Text('Target Platform Web Launch Mode: $_targetPlatformWebLaunchMode\n'),
             ],
           ),
         ),

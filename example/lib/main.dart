@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   String? _localIpAddress = "Unknown";
   bool? _isPublicIP = false;
   bool? _isVpnUsingNetworkInterface = false;
-  TargetPlatformProtector _targetPlatformWebLaunchMode = TargetPlatformProtector.unknown;
+  // TargetPlatformProtector _targetPlatformWebLaunchMode = TargetPlatformProtector.unknown;
   @override
   void initState() {
     super.initState();
@@ -80,12 +80,12 @@ class _MyAppState extends State<MyApp> {
     } catch (e) {
       isVpnUsingNetworkInterface = false;
     }
-    TargetPlatformProtector targetPlatformWebLaunchMode;
-    try {
-      targetPlatformWebLaunchMode = await _flutterProtectorPlugin.targetPlatformWebLaunchMode;
-    } catch (e) {
-      targetPlatformWebLaunchMode = TargetPlatformProtector.unknown;
-    }
+    // TargetPlatformProtector targetPlatformWebLaunchMode;
+    // try {
+    //   targetPlatformWebLaunchMode = await _flutterProtectorPlugin.targetPlatformWebLaunchMode;
+    // } catch (e) {
+    //   targetPlatformWebLaunchMode = TargetPlatformProtector.unknown;
+    // }
 
 
     if (!mounted) return;
@@ -99,7 +99,7 @@ class _MyAppState extends State<MyApp> {
       _localIpAddress = localIpAddress;
       _isPublicIP = isPublicIP;
       _isVpnUsingNetworkInterface = isVpnUsingNetworkInterface;
-      _targetPlatformWebLaunchMode = targetPlatformWebLaunchMode;
+      // _targetPlatformWebLaunchMode = targetPlatformWebLaunchMode;
     });
   }
 

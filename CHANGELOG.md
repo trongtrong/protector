@@ -8,6 +8,26 @@ This plugin offers various methods to enhance the security of your Flutter appli
 
 **Important Note:** While this plugin provides helpful checks, it's crucial to understand that no single method can guarantee complete security. Use these checks as part of a comprehensive security strategy that includes other best practices like code obfuscation, secure data storage, and server-side validation.
 
+
+## [0.0.2+2] - 2025-01-12
+### Added
+- Added features for platform and device security checks, including:
+    - Emulator detection
+    - Root/Jailbreak detection
+    - VPN and Proxy detection
+    - Sniffing app detection
+    - Public and local IP address checks
+
+### Fixed
+- Minor bug fixes and performance improvements.
+
+## [0.0.2] - 2025-01-01
+### Added
+- Initial release of the flutter_protector plugin with basic security features.
+
+
+
+
 ## Features
 
 *   **Platform Version:** Retrieves the platform version (e.g., Android 13, iOS 16).

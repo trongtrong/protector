@@ -80,7 +80,7 @@ object EmulatorDetectors {
         kotlin.io.print(Build.HARDWARE)
         return (Build.HARDWARE == "goldfish" ||
                 Build.HARDWARE == "ranchu" ||
-                Build.HARDWARE == "qcom" ||
+                Build.HOST == "dev" ||
                 Build.HARDWARE.contains("vbox86"))
     }
 

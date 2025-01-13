@@ -1,4 +1,4 @@
-# flutter_protector (0.0.7)
+# flutter_protector (0.1.0)
 
 A Flutter plugin that provides device and platform-related security features.
 
@@ -20,6 +20,11 @@ This plugin offers various methods to enhance the security of your Flutter appli
 *   **Public IP Check:** Checks if the device's IP address is a public IP.
 *   **VPN Using Network Interface Check:** Checks if the VPN is using a network interface (if a VPN is connected).
 *   **Target Platform Web Launch Mode:** Detects target platform when running on the web.
+*   **IMEI:** Get the device's IMEI (imei).
+*   **Phone Number:** Get the device's phone number (phoneNumber).
+*   **Device ID:** Retrieve the device ID (deviceId).
+
+
 
 ## Getting Started
 

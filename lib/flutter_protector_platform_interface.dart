@@ -32,6 +32,10 @@ abstract class FlutterProtectorPlatform extends PlatformInterface {
     // TODO: Implement logic to detect if the device is an emulator.
     throw UnimplementedError('Emulator detection has not been implemented.');
   }
+  Future<bool?> isDeveloperOptionsEnabled() async {
+    // TODO: Implement logic to detect if the device is an emulator.
+    throw UnimplementedError('Emulator detection has not been implemented.');
+  }
 
   Future<bool?> checkForSniffingApps(List<String> sniffingAppsToCheck ) async {
     // TODO: Implement logic to detect if the device is an emulator.
@@ -39,6 +43,26 @@ abstract class FlutterProtectorPlatform extends PlatformInterface {
   }
 
   Future<String?> getPlatformVersion() {
+    // TODO: Implement logic to fetch platform version.
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<String?> phoneNumber() {
+    // TODO: Implement logic to fetch platform version.
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<Map<String,dynamic>?> getBuildInfo() async {
+    // TODO: Implement logic to fetch platform version.
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<String?> deviceId() {
+    // TODO: Implement logic to fetch platform version.
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<String?> imei() {
     // TODO: Implement logic to fetch platform version.
     throw UnimplementedError('platformVersion() has not been implemented.');
   }

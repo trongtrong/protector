@@ -10,76 +10,85 @@ import java.util.*
 
 object VpnDetector {
 
+    /**
+     * Check if VPN is connected.
+     *
+     * @param context The application context.
+     * @return `true` if VPN is connected, otherwise `false`.
+     */
     fun isVpnConnected(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val network = connectivityManager.activeNetwork
             val capabilities = connectivityManager.getNetworkCapabilities(network)
-            return capabilities != null &&
-                    (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN) ||
-                            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
-                            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) ||
-                            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI))
+            capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_VPN) == true
         } else {
             @Suppress("DEPRECATION")
             val networkInfo = connectivityManager.activeNetworkInfo
             @Suppress("DEPRECATION")
-            return networkInfo != null && networkInfo.isConnected &&
-                    (networkInfo.type == ConnectivityManager.TYPE_VPN ||
-                            networkInfo.type == ConnectivityManager.TYPE_MOBILE ||
-                            networkInfo.type == ConnectivityManager.TYPE_ETHERNET ||
-                            networkInfo.type == ConnectivityManager.TYPE_WIFI)
+            networkInfo?.type == ConnectivityManager.TYPE_VPN
         }
     }
 
+    /**
+     * Check if a proxy is set on the device.
+     *
+     * @return `true` if a proxy is set, otherwise `false`.
+     */
     fun isProxySet(): Boolean {
         return System.getProperty("http.proxyHost") != null ||
                 System.getProperty("https.proxyHost") != null
     }
 
+    /**
+     * Check if VPN is being used by inspecting network interfaces.
+     *
+     * @return `true` if VPN is detected via network interfaces, otherwise `false`.
+     */
     fun isVpnUsingNetworkInterface(): Boolean {
-        try {
-            val networkInterfaces: Enumeration<NetworkInterface> = NetworkInterface.getNetworkInterfaces()
-            while (networkInterfaces.hasMoreElements()) {
-                val networkInterface: NetworkInterface = networkInterfaces.nextElement()
-                if (networkInterface.name.contains("tun") || networkInterface.name.contains("ppp")) {
-                    return true
-                }
-            }
+        return try {
+            NetworkInterface.getNetworkInterfaces()
+                .toList()
+                .any { it.name.contains("tun") || it.name.contains("ppp") }
         } catch (e: Exception) {
-            // Handle exceptions, e.g., logging
+            // Log the exception if needed
+            false
         }
-        return false
     }
 
+    /**
+     * Get the local IP address of the device.
+     *
+     * @return The local IP address as a String, or `null` if not found.
+     */
     fun getLocalIpAddress(): String? {
-        try {
-            val en = NetworkInterface.getNetworkInterfaces()
-            while (en.hasMoreElements()) {
-                val intf = en.nextElement()
-                val enumIpAddr = intf.inetAddresses
-                while (enumIpAddr.hasMoreElements()) {
-                    val inetAddress = enumIpAddr.nextElement()
-                    if (!inetAddress.isLoopbackAddress && inetAddress is java.net.Inet4Address) {
-                        return inetAddress.getHostAddress()
-                    }
-                }
-            }
+        return try {
+            NetworkInterface.getNetworkInterfaces()
+                .toList()
+                .flatMap { it.inetAddresses.toList() }
+                .firstOrNull { !it.isLoopbackAddress && it is java.net.Inet4Address }
+                ?.hostAddress
         } catch (ex: Exception) {
-            //Log.e("IP Address", ex.toString())
+            // Log the exception if needed
+            null
         }
-        return null
     }
 
+    /**
+     * Check if the given IP address is a public IP.
+     *
+     * @param ipAddress The IP address to check.
+     * @return `true` if the IP is public, otherwise `false`.
+     */
     fun isPublicIP(ipAddress: String): Boolean {
-        try {
+        return try {
             val inetAddress = InetAddress.getByName(ipAddress)
-            return !inetAddress.isSiteLocalAddress && !inetAddress.isLoopbackAddress
+            !inetAddress.isSiteLocalAddress && !inetAddress.isLoopbackAddress
         } catch (e: Exception) {
-            // Handle exceptions
+            // Log the exception if needed
+            false
         }
-        return false
     }
 }

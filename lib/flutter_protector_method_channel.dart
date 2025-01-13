@@ -19,9 +19,41 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
   }
 
   @override
+  Future<bool?> isDeveloperOptionsEnabled() async {
+    final check = await methodChannel.invokeMethod<bool>('isDeveloperOptionsEnabled');
+    return check;
+  }
+  @override
+  Future<String?> phoneNumber() async {
+    final check = await methodChannel.invokeMethod<String>('phoneNumber');
+    return check;
+  }
+
+  @override
+  Future<String?> deviceId() async {
+    final check = await methodChannel.invokeMethod<String>('deviceId');
+    return check;
+  }
+  @override
+  Future<String?> imei() async {
+    final check = await methodChannel.invokeMethod<String>('imei');
+    return check;
+  }
+
+  @override
   Future<bool?> isEmulator() async {
     final isEmulator = await methodChannel.invokeMethod<bool>('isEmulator');
     return isEmulator;
+  }
+  @override
+  Future<Map<String, dynamic>?> getBuildInfo() async {
+    try {
+      final result = await methodChannel.invokeMethod<Map<dynamic, dynamic>>('getBuildInfo');
+      return Map<String, dynamic>.from(result ?? {});
+    } catch (e) {
+      print("Error fetching build info: $e");
+      return null;
+    }
   }
   @override
   Future<bool?> isDeviceRooted() async {

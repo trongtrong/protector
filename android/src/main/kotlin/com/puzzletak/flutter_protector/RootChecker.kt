@@ -10,10 +10,15 @@ import java.io.InputStreamReader
 
 object RootChecker {
 
+    /**
+     * Check if the device is rooted.
+     *
+     * @return `true` if the device is rooted, otherwise `false`.
+     */
     fun isDeviceRooted(context: Context): Boolean {
         return checkRootMethod1() || checkRootMethod2() || checkRootMethod3() ||
                 checkSuBinary() || checkBusyboxBinary() || checkTestKeys() ||
-                checkDangerousProperties() || checkRootApps(context)
+                checkDangerousProperties()
     }
 
     // Method 1: Check for common root paths
@@ -89,23 +94,4 @@ object RootChecker {
         }
     }
 
-    private fun checkRootApps(context: Context): Boolean {
-        val packageManager = context.packageManager
-        val rootPackages = arrayOf(
-            "com.noshufou.android.su",
-            "eu.chainfire.supersu",
-            "com.koushikdutta.superuser",
-            "com.thirdparty.superuser",
-            "com.yellowes.su"
-        )
-
-        return rootPackages.any { packageName ->
-            try {
-                packageManager.getPackageInfo(packageName, 0)
-                true // Package is installed
-            } catch (e: PackageManager.NameNotFoundException) {
-                false
-            }
-        }
-    }
 }

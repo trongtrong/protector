@@ -61,6 +61,11 @@ class FlutterProtector {
     return FlutterProtectorPlatform.instance.isVpnConnected();
   }
 
+  /// Checks if a enable developer option in android
+  Future<bool?> isDeveloperOptionsEnabled() async {
+    return FlutterProtectorPlatform.instance.isDeveloperOptionsEnabled();
+  }
+
   /// Checks if a proxy is currently set on the device.
   /// This method delegates the call to the platform-specific implementation.
   Future<bool?> isProxySet() async {
@@ -71,6 +76,23 @@ class FlutterProtector {
   /// This method delegates the call to the platform-specific implementation.
   Future<String?> getLocalIpAddress() async {
     return FlutterProtectorPlatform.instance.getLocalIpAddress();
+  }
+
+  Future<String?> phoneNumber() async {
+    return FlutterProtectorPlatform.instance.phoneNumber();
+  }
+
+  Future<String?> deviceId() async {
+    return FlutterProtectorPlatform.instance.deviceId();
+  }
+
+
+  Future<Map<String, dynamic>?> getBuildInfo() async {
+    return FlutterProtectorPlatform.instance.getBuildInfo();
+  }
+
+  Future<String?> imei() async {
+    return FlutterProtectorPlatform.instance.imei();
   }
 
   /// Checks if the device's IP address is a public IP.

@@ -1,5 +1,6 @@
 package com.puzzletak.flutter_protector
 
+import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.os.Build
@@ -8,14 +9,11 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import android.content.Context
 import android.content.pm.PackageManager
-import com.framgia.android.emulator.EmulatorDetector
 
-/** FlutterProtectorPlugin */
-class FlutterProtectorPlugin: FlutterPlugin, MethodCallHandler {
+class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler {
 
-  private lateinit var channel : MethodChannel
+  private lateinit var channel: MethodChannel
   private lateinit var context: Context
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -24,38 +22,67 @@ class FlutterProtectorPlugin: FlutterPlugin, MethodCallHandler {
     channel.setMethodCallHandler(this)
   }
 
-  override fun onMethodCall(call: MethodCall, result: Result) {
+  override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     when (call.method) {
-      "isEmulator" -> {
-        isEmulator { isEmulator ->
-          result.success(isEmulator)
+      "isEmulator" -> result.success(isEmulator())
+      "checkForSniffingApps" -> {
+        val sniffingPackages = call.arguments as? List<String>
+        if (sniffingPackages != null) {
+          result.success(checkForSniffingApps(sniffingPackages.toTypedArray()))
+        } else {
+          result.error("INVALID_ARGS", "Sniffing packages list is required", null)
         }
       }
-//      "checkForSniffingApps" -> {
-//        val sniffingPackages = call.arguments as? List<String> // Correctly receive arguments
-//        if (sniffingPackages != null) {
-//          result.success(checkForSniffingApps(sniffingPackages.toTypedArray()))
-//        } else {
-//          result.error("INVALID_ARGS", "Sniffing packages list is required", null)
-//        }
-//      }
       "isDeviceRooted" -> result.success(isDeviceRooted())
-//      "isVpnConnected" -> result.success(isVpnConnected())
-//      "isProxySet" -> result.success(isProxySet())
-//      "getLocalIpAddress" -> result.success(getLocalIpAddress())
-//      "isPublicIP" -> result.success(isPublicIP())
-//      "isVpnUsingNetworkInterface" -> result.success(isVpnUsingNetworkInterface())
-//      "getPlatformVersion" -> result.success("Android ${Build.VERSION.RELEASE}")
+      "getBuildInfo" -> result.success(getBuildInfo())
+      "phoneNumber" -> result.success(phoneNumber())
+      "deviceId" -> result.success(deviceId())
+      "isVpnConnected" -> result.success(isVpnConnected())
+      "isProxySet" -> result.success(isProxySet())
+      "isDeveloperOptionsEnabled" -> result.success(isDeveloperOptionsEnabled())
+      "getLocalIpAddress" -> result.success(getLocalIpAddress())
+      "isPublicIP" -> {
+        val ip = call.arguments as? String
+        if (ip != null) {
+          result.success(isPublicIP(ip))
+        } else {
+          result.error("INVALID_ARGS", "IP address is required", null)
+        }
+      }
+      "isVpnUsingNetworkInterface" -> result.success(isVpnUsingNetworkInterface())
+      "getPlatformVersion" -> result.success("Android ${Build.VERSION.RELEASE}")
       else -> result.notImplemented()
     }
   }
 
+  private fun deviceId(): String? {
+    val deviceId = EmulatorDetectors.getDeviceId(context)
+    println("Device ID: $deviceId")
+    return deviceId
+  }
+  private fun getBuildInfo(): Map<String, Any?> {
+    val data = EmulatorDetectors.getBuildInfo()
+    return data
+  }
+  private fun phoneNumber(): String? {
+    val phoneNumber = EmulatorDetectors.getPhoneNumber(context)
+    println("Phone Number: $phoneNumber")
+    return  phoneNumber
+  }
+  private fun isEmulator(): Boolean {
+    val isEmulatora = EmulatorDetectors.isEmulator(context)
+    if (isEmulatora) {
+      println("This device is an emulator.")
+    } else {
+      println("This device is a real physical device.")
+    }
+    return isEmulatora
+  }
 
-
-  fun checkForSniffingApps(sniffingPackages : Array<String>): Boolean {
+  private fun checkForSniffingApps(sniffingPackages: Array<String>?): Boolean {
+    val packages = sniffingPackages ?: emptyArray()
     val packageManager = context.packageManager
-
-    return sniffingPackages.any { packageName ->
+    return packages.any { packageName ->
       try {
         packageManager.getPackageInfo(packageName, 0)
         true // Package is installed
@@ -65,47 +92,41 @@ class FlutterProtectorPlugin: FlutterPlugin, MethodCallHandler {
     }
   }
 
-  private fun isEmulator(callback: (Boolean) -> Unit) {
-    EmulatorDetector.with(context)
-      .setCheckTelephony(true)
-      .addPackageName("com.bluestacks")
-      .setDebug(true)
-      .detect { isEmulator ->
-        callback(isEmulator)
-      }
-  }
-
-
   private fun isDeviceRooted(): Boolean {
-    return RootChecker.isDeviceRooted(context) || checkNoHardwareSensors()
+    return RootChecker.isDeviceRooted(context)
   }
-//  private fun isVpnConnected(): Boolean {
-//    return VpnDetector.isVpnConnected(context)
-//  }
-//
-//  private fun isProxySet(): Boolean {
-//    return VpnDetector.isProxySet(context)
-//  }
-//  private fun isVpnUsingNetworkInterface(): Boolean {
-//    return VpnDetector.isVpnUsingNetworkInterface(context)
-//  }
-//  private fun getLocalIpAddress(): Boolean {
-//    return VpnDetector.getLocalIpAddress(context)
-//  }
-//
-//  private fun isPublicIP(): Boolean {
-//    return VpnDetector.isPublicIP(context)
-//  }
+
+  private fun isVpnConnected(): Boolean {
+    return VpnDetector.isVpnConnected(context)
+  }
+
+  private fun isDeveloperOptionsEnabled(): Boolean {
+    return DeveloperOptionsChecker.isDeveloperOptionsEnabled(context)
+  }
+
+  private fun isProxySet(): Boolean {
+    return VpnDetector.isProxySet()
+  }
+
+  private fun isVpnUsingNetworkInterface(): Boolean {
+    return VpnDetector.isVpnUsingNetworkInterface()
+  }
+
+  private fun getLocalIpAddress(): String? {
+    return VpnDetector.getLocalIpAddress()
+  }
+
+  private fun isPublicIP(ip: String?): Boolean {
+    return ip?.let { VpnDetector.isPublicIP(it) } ?: false
+  }
 
   private fun checkNoHardwareSensors(): Boolean {
     val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-    return sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) == null
-            || sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE) == null
+    return sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) == null ||
+            sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE) == null
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
   }
-
-
 }

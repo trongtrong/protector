@@ -49,6 +49,31 @@ class MockFlutterProtectorPlatform
   Future<bool?> isDeviceRooted() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<bool?> isDeveloperOptionsEnabled() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> deviceId() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> imei() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> phoneNumber() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Map<String, dynamic>?> getBuildInfo() {
+    throw UnimplementedError();
+  }
 }
 
 void main() {

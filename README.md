@@ -2,11 +2,19 @@
 
 A Flutter plugin that provides device and platform-related security features.
 
-[![pub package](https://img.shields.io/pub/v/flutter_protector)](https://pub.dev/packages/flutter_protector)
+[![pub package](https://img.shields.io/pub/v/flutter_protector.svg)](https://pub.dev/packages/flutter_protector)
+[![pub points](https://img.shields.io/pub/points/flutter_protector?color=2E8B57&label=pub%20points)](https://pub.dev/packages/flutter_protector/score)
+
+
 
 This plugin offers various methods to enhance the security of your Flutter applications by providing information about the device and platform. It includes checks for emulator detection, root/jailbreak status, sniffing apps, VPN connection status, proxy settings, and more.
 
 **Important Note:** While this plugin provides helpful checks, it's crucial to understand that no single method can guarantee complete security. Use these checks as part of a comprehensive security strategy that includes other best practices like code obfuscation, secure data storage, and server-side validation.
+
+**Demo:**
+
+<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/image.png?raw=true" alt="image_demo" width="260" height="600">
+
 
 ## Features
 

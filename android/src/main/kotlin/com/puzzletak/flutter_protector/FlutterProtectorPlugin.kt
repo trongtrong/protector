@@ -10,6 +10,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import android.content.Context
 import android.content.pm.PackageManager
+import com.framgia.android.emulator.EmulatorDetector
 
 /** FlutterProtectorPlugin */
 class FlutterProtectorPlugin: FlutterPlugin, MethodCallHandler {
@@ -25,22 +26,26 @@ class FlutterProtectorPlugin: FlutterPlugin, MethodCallHandler {
 
   override fun onMethodCall(call: MethodCall, result: Result) {
     when (call.method) {
-      "isEmulator" -> result.success(isEmulator())
-      "checkForSniffingApps" -> {
-        val sniffingPackages = call.arguments as? List<String> // Correctly receive arguments
-        if (sniffingPackages != null) {
-          result.success(checkForSniffingApps(sniffingPackages.toTypedArray()))
-        } else {
-          result.error("INVALID_ARGS", "Sniffing packages list is required", null)
+      "isEmulator" -> {
+        isEmulator { isEmulator ->
+          result.success(isEmulator)
         }
       }
+//      "checkForSniffingApps" -> {
+//        val sniffingPackages = call.arguments as? List<String> // Correctly receive arguments
+//        if (sniffingPackages != null) {
+//          result.success(checkForSniffingApps(sniffingPackages.toTypedArray()))
+//        } else {
+//          result.error("INVALID_ARGS", "Sniffing packages list is required", null)
+//        }
+//      }
       "isDeviceRooted" -> result.success(isDeviceRooted())
-      "isVpnConnected" -> result.success(isVpnConnected())
-      "isProxySet" -> result.success(isProxySet())
-      "getLocalIpAddress" -> result.success(getLocalIpAddress())
-      "isPublicIP" -> result.success(isPublicIP())
-      "isVpnUsingNetworkInterface" -> result.success(isVpnUsingNetworkInterface())
-      "getPlatformVersion" -> result.success("Android ${Build.VERSION.RELEASE}")
+//      "isVpnConnected" -> result.success(isVpnConnected())
+//      "isProxySet" -> result.success(isProxySet())
+//      "getLocalIpAddress" -> result.success(getLocalIpAddress())
+//      "isPublicIP" -> result.success(isPublicIP())
+//      "isVpnUsingNetworkInterface" -> result.success(isVpnUsingNetworkInterface())
+//      "getPlatformVersion" -> result.success("Android ${Build.VERSION.RELEASE}")
       else -> result.notImplemented()
     }
   }
@@ -60,29 +65,37 @@ class FlutterProtectorPlugin: FlutterPlugin, MethodCallHandler {
     }
   }
 
-  private fun isEmulator(): Boolean {
-    return EmulatorDetector.isEmulator(context) || checkNoHardwareSensors()
+  private fun isEmulator(callback: (Boolean) -> Unit) {
+    EmulatorDetector.with(context)
+      .setCheckTelephony(true)
+      .addPackageName("com.bluestacks")
+      .setDebug(true)
+      .detect { isEmulator ->
+        callback(isEmulator)
+      }
   }
+
+
   private fun isDeviceRooted(): Boolean {
     return RootChecker.isDeviceRooted(context) || checkNoHardwareSensors()
   }
-  private fun isVpnConnected(): Boolean {
-    return VpnDetector.isVpnConnected(context)
-  }
-
-  private fun isProxySet(): Boolean {
-    return VpnDetector.isProxySet(context)
-  }
-  private fun isVpnUsingNetworkInterface(): Boolean {
-    return VpnDetector.isVpnUsingNetworkInterface(context)
-  }
-  private fun getLocalIpAddress(): Boolean {
-    return VpnDetector.getLocalIpAddress(context)
-  }
-
-  private fun isPublicIP(): Boolean {
-    return VpnDetector.isPublicIP(context)
-  }
+//  private fun isVpnConnected(): Boolean {
+//    return VpnDetector.isVpnConnected(context)
+//  }
+//
+//  private fun isProxySet(): Boolean {
+//    return VpnDetector.isProxySet(context)
+//  }
+//  private fun isVpnUsingNetworkInterface(): Boolean {
+//    return VpnDetector.isVpnUsingNetworkInterface(context)
+//  }
+//  private fun getLocalIpAddress(): Boolean {
+//    return VpnDetector.getLocalIpAddress(context)
+//  }
+//
+//  private fun isPublicIP(): Boolean {
+//    return VpnDetector.isPublicIP(context)
+//  }
 
   private fun checkNoHardwareSensors(): Boolean {
     val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager

@@ -1,4 +1,4 @@
-# flutter_protector (0.0.5)
+# flutter_protector (0.0.6)
 
 A Flutter plugin that provides device and platform-related security features.
 

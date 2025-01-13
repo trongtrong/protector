@@ -8,11 +8,17 @@ This plugin offers various methods to enhance the security of your Flutter appli
 
 **Important Note:** While this plugin provides helpful checks, it's crucial to understand that no single method can guarantee complete security. Use these checks as part of a comprehensive security strategy that includes other best practices like code obfuscation, secure data storage, and server-side validation.
 
+## [0.0.6] - 2025-01-12
+
+### Fixed
+- fix bug check emulator
+
 ## [0.0.5] - 2025-01-12
 
 ### Fixed
 - Minor bug fixes and performance improvements.
 - remove web platform
+
 
 ## [0.0.3] - 2025-01-12
 

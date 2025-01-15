@@ -38,10 +38,6 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler {
         }
       }
       "isDeviceRooted" -> result.success(isDeviceRooted())
-      "checkIsEmulator" -> {
-        val isEmulator: Boolean = EasyProtectorLib.checkIsRunningInEmulator(context, null)
-        result.success(isEmulator)
-      }
       "getBuildInfo" -> result.success(getBuildInfo())
       "phoneNumber" -> result.success(phoneNumber())
       "deviceId" -> result.success(deviceId())

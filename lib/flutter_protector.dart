@@ -41,6 +41,11 @@ class FlutterProtector {
   Future<bool?> isEmulator() async {
     return FlutterProtectorPlatform.instance.isEmulator();
   }
+  /// Checks if the device is running on an emulator.
+  /// This method delegates the call to the platform-specific implementation.
+  Future<bool?> isEmulatorSuper() async {
+    return FlutterProtectorPlatform.instance.isEmulatorSuper();
+  }
 
   /// Checks if the device is rooted (Android) or jailbroken (iOS).
   /// This method delegates the call to the platform-specific implementation.

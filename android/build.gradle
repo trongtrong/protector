@@ -5,6 +5,8 @@ buildscript {
     ext.kotlin_version = "1.8.22"
     repositories {
         google()
+        jcenter()
+        google()
         mavenCentral()
     }
 
@@ -16,6 +18,8 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
+        jcenter()
         google()
         mavenCentral()
     }
@@ -48,6 +52,7 @@ android {
     }
 
     dependencies {
+        implementation files('libs/library-release.aar')
         testImplementation("org.jetbrains.kotlin:kotlin-test")
         testImplementation("org.mockito:mockito-core:5.0.0")
         implementation 'androidx.core:core-ktx:1.9.0'

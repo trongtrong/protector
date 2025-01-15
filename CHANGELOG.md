@@ -1,4 +1,4 @@
-# flutter_protector (0.1.0)
+# flutter_protector (0.1.1)
 
 A Flutter plugin that provides device and platform-related security features.
 
@@ -7,6 +7,11 @@ A Flutter plugin that provides device and platform-related security features.
 This plugin offers various methods to enhance the security of your Flutter applications by providing information about the device and platform. It includes checks for emulator detection, root/jailbreak status, sniffing apps, VPN connection status, proxy settings, and more.
 
 **Important Note:** While this plugin provides helpful checks, it's crucial to understand that no single method can guarantee complete security. Use these checks as part of a comprehensive security strategy that includes other best practices like code obfuscation, secure data storage, and server-side validation.
+
+## [0.1.1] - 2025-01-15
+
+### Fixed
+- add isEmulatorSuper support android (6 -> 15)
 
 ## [0.1.0] - 2025-01-12
 

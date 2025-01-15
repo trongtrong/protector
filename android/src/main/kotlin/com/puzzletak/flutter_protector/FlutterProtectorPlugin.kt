@@ -1,15 +1,18 @@
 package com.puzzletak.flutter_protector
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.os.Build
+import android.util.Log
 import com.puzzletak.flutter_protector.VpnDetector
+import com.puzzletak.library.EmulatorSuperCheckCallback
+import com.puzzletak.library.PuzzleTakProtectorLib
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import android.content.pm.PackageManager
 
 class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler {
 
@@ -25,6 +28,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler {
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     when (call.method) {
       "isEmulator" -> result.success(isEmulator())
+      "isEmulatorSuper" -> result.success(isEmulatorSuper())
       "checkForSniffingApps" -> {
         val sniffingPackages = call.arguments as? List<String>
         if (sniffingPackages != null) {
@@ -34,6 +38,10 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler {
         }
       }
       "isDeviceRooted" -> result.success(isDeviceRooted())
+      "checkIsEmulator" -> {
+        val isEmulator: Boolean = EasyProtectorLib.checkIsRunningInEmulator(context, null)
+        result.success(isEmulator)
+      }
       "getBuildInfo" -> result.success(getBuildInfo())
       "phoneNumber" -> result.success(phoneNumber())
       "deviceId" -> result.success(deviceId())
@@ -68,6 +76,20 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler {
     val phoneNumber = EmulatorDetectors.getPhoneNumber(context)
     println("Phone Number: $phoneNumber")
     return  phoneNumber
+  }
+  private fun isEmulatorSuper(): Boolean {
+    var count  = 0
+    PuzzleTakProtectorLib.checkIsRunningInEmulator(context, object : EmulatorSuperCheckCallback {
+      override fun findEmulator(emulatorInfo: String) {
+        Log.d("PUZZLETAK", "checkEmulator: $emulatorInfo")
+      }
+
+      override fun checkEmulator(emulatorInfo: Int) {
+        count = emulatorInfo
+        Log.d("PUZZLETAK", "checkEmulator: $emulatorInfo")
+      }
+    })
+    return (count > 2)
   }
   private fun isEmulator(): Boolean {
     val isEmulatora = EmulatorDetectors.isEmulator(context)

@@ -74,6 +74,11 @@ class MockFlutterProtectorPlatform
   Future<Map<String, dynamic>?> getBuildInfo() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<bool?> isEmulatorSuper() {
+    throw UnimplementedError();
+  }
 }
 
 void main() {

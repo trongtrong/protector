@@ -85,7 +85,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler {
         Log.d("PUZZLETAK", "checkEmulator: $emulatorInfo")
       }
     })
-    return (count > 2)
+    return (count >= 2)
   }
   private fun isEmulator(): Boolean {
     val isEmulatora = EmulatorDetectors.isEmulator(context)

@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
     }
     bool? isEmulator2;
     try {
-      isEmulator2 = await _flutterProtectorPlugin.isEmulator();
+      isEmulator2 = await _flutterProtectorPlugin.isEmulatorSuper();
     } catch (e) {
       isEmulator2 = false;
     }
@@ -171,7 +171,7 @@ class _MyAppState extends State<MyApp> {
                       Text('imei : $_imei\n'),
                       Text('Running on: $_platformVersion\n'),
                       Text('Is Emulator: $_isEmulator\n'),
-                      Text('Is Emulator2: $_isEmulator\n'),
+                      Text('Is Emulator2: $_isEmulator2\n'),
                       Text('Is Rooted: $_isDeviceRooted\n'),
                       Text('Is VPN Connected: $_isVpnConnected\n'),
                       Text('Is Proxy Set: $_isProxySet\n'),

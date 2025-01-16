@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
   String _deviceId = 'Unknown';
   String _imei = 'Unknown';
   bool? _isEmulator = false;
+  bool? _isEmulator2 = false;
   bool? _isDeviceRooted = false;
   bool? _isVpnConnected = false;
   bool? _isProxySet = false;
@@ -69,6 +70,12 @@ class _MyAppState extends State<MyApp> {
       isEmulator = await _flutterProtectorPlugin.isEmulator();
     } catch (e) {
       isEmulator = false;
+    }
+    bool? isEmulator2;
+    try {
+      isEmulator2 = await _flutterProtectorPlugin.isEmulator();
+    } catch (e) {
+      isEmulator2 = false;
     }
     bool? isDeviceRooted;
     try {
@@ -132,6 +139,7 @@ class _MyAppState extends State<MyApp> {
       _imei = imei ?? "null";
       _platformVersion = platformVersion!;
       _isEmulator = isEmulator;
+      _isEmulator2 = isEmulator2;
       _isDeveloperOptionsEnabled = isDeveloperOptionsEnabled;
       _isDeviceRooted = isDeviceRooted;
       _isVpnConnected = isVpnConnected;
@@ -163,6 +171,7 @@ class _MyAppState extends State<MyApp> {
                       Text('imei : $_imei\n'),
                       Text('Running on: $_platformVersion\n'),
                       Text('Is Emulator: $_isEmulator\n'),
+                      Text('Is Emulator2: $_isEmulator\n'),
                       Text('Is Rooted: $_isDeviceRooted\n'),
                       Text('Is VPN Connected: $_isVpnConnected\n'),
                       Text('Is Proxy Set: $_isProxySet\n'),

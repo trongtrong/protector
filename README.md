@@ -12,7 +12,8 @@ This plugin offers various methods to enhance the security of your Flutter appli
 **Important Note:** While this plugin provides helpful checks, it's crucial to understand that no single method can guarantee complete security. Use these checks as part of a comprehensive security strategy that includes other best practices like code obfuscation, secure data storage, and server-side validation.
 
 **Demo:**
-<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/device.jpg?raw=true" alt="image_demo" width="660" height="600">
+
+<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/device.jpg?raw=true" alt="image_demo" width="307" height="335">
 
 
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/image.png?raw=true" alt="image_demo" width="260" height="600">

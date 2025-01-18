@@ -4,7 +4,7 @@ version: 0.1.3 # Use semantic versioning (major.minor.patch+build_number)
 homepage: https://github.com/PuzzleTakX/flutter_protector # Add your repo URL
 repository: https://github.com/PuzzleTakX/flutter_protector
 issue_tracker: https://github.com/PuzzleTakX/flutter_protector/issues # Optional: Link to your issue tracker
-documentation: https://github.com/PuzzleTakX/flutter_protector/blob/main/README.md # Optional: Link to documentation
+documentation: https://github.com/PuzzleTakX/flutter_protector/blob/master/README.md # Optional: Link to documentation
 license: MIT # Add a license
 environment:
   sdk: '>=2.17.0 <4.0.0'

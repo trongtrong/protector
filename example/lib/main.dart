@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_protector/flutter_protector.dart';
+import 'package:flutter_protector_example/security_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  runApp(SecurityScreen());
 }
 
 class MyApp extends StatefulWidget {
@@ -29,8 +30,8 @@ class _MyAppState extends State<MyApp> {
   bool? _isPublicIP = false;
   bool? _isVpnUsingNetworkInterface = false;
   bool _loading = true;
-  Map<dynamic,dynamic> data= {};
-  // TargetPlatformProtector _targetPlatformWebLaunchMode = TargetPlatformProtector.unknown;
+  Map<dynamic, dynamic> data = {};
+
   @override
   void initState() {
     super.initState();
@@ -41,95 +42,103 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _loading = true;
     });
+
     String? platformVersion;
     try {
       platformVersion = await _flutterProtectorPlugin.getPlatformVersion();
     } catch (e) {
       platformVersion = 'Failed to get platform version.';
     }
+
     String? phoneNumber;
     try {
       phoneNumber = await _flutterProtectorPlugin.phoneNumber();
     } catch (e) {
-      phoneNumber = 'Failed to get platform version.';
+      phoneNumber = 'Failed to get phone number.';
     }
+
     String? deviceId;
     try {
       deviceId = await _flutterProtectorPlugin.deviceId();
     } catch (e) {
-      deviceId = 'Failed to get platform version.';
+      deviceId = 'Failed to get device ID.';
     }
+
     String? imei;
     try {
       imei = await _flutterProtectorPlugin.imei();
     } catch (e) {
-      imei = 'Failed to get platform version.';
+      imei = 'Failed to get IMEI.';
     }
+
     bool? isEmulator;
     try {
-      isEmulator = await _flutterProtectorPlugin.isEmulator();
+      isEmulator = await _flutterProtectorPlugin.isEmulatorOld();
     } catch (e) {
       isEmulator = false;
     }
+
     bool? isEmulator2;
     try {
       isEmulator2 = await _flutterProtectorPlugin.isEmulatorSuper();
     } catch (e) {
       isEmulator2 = false;
     }
+
     bool? isDeviceRooted;
     try {
       isDeviceRooted = await _flutterProtectorPlugin.isDeviceRooted();
     } catch (e) {
       isDeviceRooted = false;
     }
+
     bool? isVpnConnected;
     try {
       isVpnConnected = await _flutterProtectorPlugin.isVpnConnected();
     } catch (e) {
       isVpnConnected = false;
     }
+
     bool? isProxySet;
     try {
       isProxySet = await _flutterProtectorPlugin.isProxySet();
     } catch (e) {
       isProxySet = false;
     }
+
     bool? isDeveloperOptionsEnabled;
     try {
       isDeveloperOptionsEnabled = await _flutterProtectorPlugin.isDeveloperOptionsEnabled();
     } catch (e) {
       isDeveloperOptionsEnabled = false;
     }
+
     String? localIpAddress;
     try {
       localIpAddress = await _flutterProtectorPlugin.getLocalIpAddress();
     } catch (e) {
       localIpAddress = "Unknown";
     }
+
     bool? isPublicIP;
     try {
       isPublicIP = await _flutterProtectorPlugin.isPublicIP();
     } catch (e) {
       isPublicIP = false;
     }
+
     bool? isVpnUsingNetworkInterface;
     try {
       isVpnUsingNetworkInterface = await _flutterProtectorPlugin.isVpnUsingNetworkInterface();
     } catch (e) {
       isVpnUsingNetworkInterface = false;
     }
-    // TargetPlatformProtector targetPlatformWebLaunchMode;
-    // try {
-    //   targetPlatformWebLaunchMode = await _flutterProtectorPlugin.targetPlatformWebLaunchMode;
-    // } catch (e) {
-    //   targetPlatformWebLaunchMode = TargetPlatformProtector.unknown;
-    // }
 
-     await _flutterProtectorPlugin.getBuildInfo().then((value) {
-       print(value);
-       data = value!;
-    },);
+    await _flutterProtectorPlugin.checkResultSecurityInfo().then((value) {
+      setState(() {
+        data = value ?? {};
+      });
+    });
 
     if (!mounted) return;
 
@@ -148,61 +157,97 @@ class _MyAppState extends State<MyApp> {
       _isPublicIP = isPublicIP;
       _isVpnUsingNetworkInterface = isVpnUsingNetworkInterface;
       _loading = false;
-      // _targetPlatformWebLaunchMode = targetPlatformWebLaunchMode;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('PuzzleTak Flutter Protector app'),
+          title: const Text('PuzzleTak Flutter Protector App'),
         ),
         body: Center(
-          child: _loading ? CircularProgressIndicator() : Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Text('phoneNumber : $_phoneNumber\n'),
-                      Text('deviceId : $_deviceId\n'),
-                      Text('imei : $_imei\n'),
-                      Text('Running on: $_platformVersion\n'),
-                      Text('Is Emulator: $_isEmulator\n'),
-                      Text('Is Emulator2: $_isEmulator2\n'),
-                      Text('Is Rooted: $_isDeviceRooted\n'),
-                      Text('Is VPN Connected: $_isVpnConnected\n'),
-                      Text('Is Proxy Set: $_isProxySet\n'),
-                      Text('Local IP Address: $_localIpAddress\n'),
-                      Text('Is Public IP: $_isPublicIP\n'),
-                      Text('Is VPN Using Network Interface: $_isVpnUsingNetworkInterface\n'),
-                      Text('Is Enabled Developer Option: $_isDeveloperOptionsEnabled\n'),
-                      ListView.builder(
-                        itemCount: data.length,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => Container(
-                          alignment: Alignment.center,
-                        child: Wrap(
-                          children: [
-                            Text(data.keys.toList()[index],style: TextStyle(color:  Colors.red),),
-                            Text(" => "),
-                            Text(data.values.toList()[index].toString(),style: TextStyle(color:  Colors.blueAccent),),
-                          ],
-                        ),
-                      ),)
-          
-                    ],
+          child: _loading
+              ? CircularProgressIndicator()
+              : SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                TextButton(
+                  onPressed: () async {
+                    await _flutterProtectorPlugin.screenshotSecurity(true);
+                  },
+                  child: const Text('Enable Screenshot'),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                   ),
                 ),
-              ),
-              TextButton(onPressed: initPlatformState, child: Text("Check Security")),
-              // Text('Target Platform Web Launch Mode: $_targetPlatformWebLaunchMode\n'),
-            ],
+                TextButton(
+                  onPressed: () async {
+                    await _flutterProtectorPlugin.screenshotSecurity(false);
+                  },
+                  child: const Text('Disable Screenshot'),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                  ),
+                ),
+                _buildInfoCard('Phone Number', _phoneNumber),
+                _buildInfoCard('Device ID', _deviceId),
+                _buildInfoCard('IMEI', _imei),
+                _buildInfoCard('Platform Version', _platformVersion),
+                _buildInfoCard('Is Emulator', _isEmulator.toString()),
+                _buildInfoCard('Is Emulator 2', _isEmulator2.toString()),
+                _buildInfoCard('Is Device Rooted', _isDeviceRooted.toString()),
+                _buildInfoCard('Is VPN Connected', _isVpnConnected.toString()),
+                _buildInfoCard('Is Proxy Set', _isProxySet.toString()),
+                _buildInfoCard('Local IP Address', _localIpAddress ?? 'Unknown'),
+                _buildInfoCard('Is Public IP', _isPublicIP.toString()),
+                _buildInfoCard('Is VPN Using Network Interface', _isVpnUsingNetworkInterface.toString()),
+                _buildInfoCard('Is Developer Options Enabled', _isDeveloperOptionsEnabled.toString()),
+                const SizedBox(height: 20),
+                TextButton(
+                  onPressed: initPlatformState,
+                  child: const Text('Check Security'),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                if (data.isNotEmpty)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: data.entries
+                        .map((entry) => ListTile(
+                      title: Text(entry.key.toString(), style: TextStyle(color: Colors.red)),
+                      subtitle: Text(entry.value.toString(), style: TextStyle(color: Colors.blueAccent)),
+                    ))
+                        .toList(),
+                  ),
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildInfoCard(String title, String value) {
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(12.0),
+        title: Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
+        subtitle: Text(value),
       ),
     );
   }

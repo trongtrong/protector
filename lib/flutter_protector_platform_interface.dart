@@ -23,7 +23,7 @@ abstract class FlutterProtectorPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<bool?> isEmulator() async {
+  Future<bool?> isEmulatorOld() async {
     // TODO: Implement logic to detect if the device is an emulator.
     throw UnimplementedError('Emulator detection has not been implemented.');
   }
@@ -36,12 +36,26 @@ abstract class FlutterProtectorPlatform extends PlatformInterface {
     // TODO: Implement logic to detect if the device is an emulator.
     throw UnimplementedError('Emulator detection has not been implemented.');
 
+  }
+  Future<Map<String, dynamic>?> checkResultSecurityInfo() async {
+    // TODO: Implement logic to detect if the device is an emulator.
+    throw UnimplementedError('Emulator detection has not been implemented.');
+
+  }
+  Future<int?> checkResultSecurity() async {
+    // TODO: Implement logic to detect if the device is an emulator.
+    throw UnimplementedError('Emulator detection has not been implemented.');
+
   } Future<bool?> isEmulatorSuper() async {
     // TODO: Implement logic to detect if the device is an emulator.
     throw UnimplementedError('Emulator detection has not been implemented.');
   }
 
   Future<bool?> checkForSniffingApps(List<String> sniffingAppsToCheck ) async {
+    // TODO: Implement logic to detect if the device is an emulator.
+    throw UnimplementedError('Emulator detection has not been implemented.');
+  }
+  Future<bool?> screenshotSecurity(bool enable ) async {
     // TODO: Implement logic to detect if the device is an emulator.
     throw UnimplementedError('Emulator detection has not been implemented.');
   }

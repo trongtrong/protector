@@ -1,4 +1,4 @@
-# flutter_protector (0.1.2)
+# flutter_protector (0.2.0)
 
 A Flutter plugin that provides device and platform-related security features.
 
@@ -35,6 +35,19 @@ This plugin offers various methods to enhance the security of your Flutter appli
 
 
 ## Getting Started
+
+
+## Android Permission
+
+
+    ```bash
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+    ```
 
 1.  **Add Dependency:**
 

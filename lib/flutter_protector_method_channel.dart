@@ -46,6 +46,28 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
     return isEmulator;
   }
   @override
+  Future<Map<String, dynamic>?> checkResultSecurityInfo() async {
+    try {
+      final result = await methodChannel.invokeMethod('checkResultSecurityInfo');
+
+      // Ensure result is of the correct type before casting
+      if (result is Map) {
+        return Map<String, dynamic>.from(result);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print("Error fetching build info: $e");
+      return null;
+    }
+  }
+
+  @override
+  Future<int?> checkResultSecurity() async {
+    final isEmulator = await methodChannel.invokeMethod<int>('checkResultSecurity');
+    return isEmulator;
+  }
+  @override
   Future<bool?> isEmulatorSuper() async {
     final isEmulator = await methodChannel.invokeMethod<bool>('isEmulatorSuper');
     return isEmulator;
@@ -69,6 +91,11 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
   Future<bool?> checkForSniffingApps(List<String> sniffingAppsToCheck ) async {
     final isEmulator = await methodChannel.invokeMethod<bool>('checkForSniffingApps',sniffingAppsToCheck);
     return isEmulator;
+  }
+  @override
+  Future<bool?> screenshotSecurity(bool enable ) async {
+    final screenshotSecuritys = await methodChannel.invokeMethod<bool>('screenshotSecurity',enable);
+    return screenshotSecuritys;
   }
 
   @override

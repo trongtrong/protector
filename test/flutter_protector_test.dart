@@ -12,7 +12,7 @@ class MockFlutterProtectorPlatform
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<bool?> isEmulator() {
+  Future<bool?> isEmulatorOld() {
     throw UnimplementedError();
   }
 
@@ -77,6 +77,21 @@ class MockFlutterProtectorPlatform
 
   @override
   Future<bool?> isEmulatorSuper() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<int?> checkResultSecurity() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Map<String, dynamic>?> checkResultSecurityInfo() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> screenshotSecurity(bool enable) {
     throw UnimplementedError();
   }
 }

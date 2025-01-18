@@ -38,8 +38,8 @@ class FlutterProtector {
 
   /// Checks if the device is running on an emulator.
   /// This method delegates the call to the platform-specific implementation.
-  Future<bool?> isEmulator() async {
-    return FlutterProtectorPlatform.instance.isEmulator();
+  Future<bool?> isEmulatorOld() async {
+    return FlutterProtectorPlatform.instance.isEmulatorOld();
   }
   /// Checks if the device is running on an emulator.
   /// This method delegates the call to the platform-specific implementation.
@@ -59,6 +59,10 @@ class FlutterProtector {
   Future<bool?> checkForSniffingApps(List<String> sniffingAppsToCheck) async {
     return FlutterProtectorPlatform.instance.checkForSniffingApps(sniffingAppsToCheck);
   }
+  /// check screen shot in app AND RECORDING
+  Future<bool?> screenshotSecurity(bool enable) async {
+    return FlutterProtectorPlatform.instance.screenshotSecurity(enable);
+  }
 
   /// Checks if a VPN is currently connected on the device.
   /// This method delegates the call to the platform-specific implementation.
@@ -69,6 +73,13 @@ class FlutterProtector {
   /// Checks if a enable developer option in android
   Future<bool?> isDeveloperOptionsEnabled() async {
     return FlutterProtectorPlatform.instance.isDeveloperOptionsEnabled();
+  }
+
+  Future<Map<String, dynamic>?> checkResultSecurityInfo() async {
+    return FlutterProtectorPlatform.instance.checkResultSecurityInfo();
+  }
+  Future<int?> checkResultSecurity() async {
+    return FlutterProtectorPlatform.instance.checkResultSecurity();
   }
 
   /// Checks if a proxy is currently set on the device.

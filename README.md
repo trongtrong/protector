@@ -22,9 +22,9 @@ This plugin offers various methods to enhance the security of your Flutter appli
 
 ## Features
 
-*   **Platform Version:** Retrieves the platform version (e.g., Android 13, iOS 16).
+*   **Platform Version:** Retrieves the platform version (e.g., Android 13).
 *   **Emulator Detection:** Checks if the app is running on an emulator (Android).
-*   **Root/Jailbreak Detection:** Checks if the device is rooted (Android) or jailbroken (iOS).
+*   **Root/Jailbreak Detection:** Checks if the device is rooted (Android).
 *   **Sniffing App Detection:** Checks for the presence of known sniffing apps.
 *   **VPN Connection Detection:** Checks if a VPN is currently connected.
 *   **Proxy Detection:** Checks if a proxy is set on the device.

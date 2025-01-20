@@ -1,10 +1,14 @@
 
 
 
+
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_protector/flutter_protector.dart';
+import 'package:flutter_protector_example/security/info_device.dart';
+import 'package:flutter_protector_example/security/info_result.dart';
 
 class SecurityScreen extends StatefulWidget {
   const SecurityScreen({super.key});
@@ -17,28 +21,24 @@ class _SecurityScreenState extends State<SecurityScreen> {
   Color colorPrime = Colors.blueGrey;
   final ptx = FlutterProtector();
   int countProblem = 0;
+  Color private = Colors.red;
 
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
-      home: _homeView(),
-    );
+    return Scaffold(body: _homeView());
+
   }
 
 
   Widget _homeView(){
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
+    return 
+       Column(
         children: [
           _header(),
           Expanded(child: _content())
         ],
-      ),
-    );
+      );
   }
 
 
@@ -134,7 +134,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
         children: [
           SizedBox(height: 30,),
         _button(
-          call: () {},
+          call: () {Navigator.push(context, MaterialPageRoute(builder: (context) => InfoResult(),));},
           color: colorPrime,
           content: (colorPrime == Colors.red)
               ? "This is an emulator. Please use a real device."
@@ -143,15 +143,63 @@ class _SecurityScreenState extends State<SecurityScreen> {
               ? "Checking device status..."
               : "Check device status",
         ),
-          _button(
-            call: () {},
-            color: Colors.black,
-            content: "Security: Disable Screenshot",
-            title: "Access Ability",
+
+
+          Container(
+            width: double.maxFinite,
+            padding: EdgeInsets.symmetric(horizontal: 18,vertical: 10),
+            child: TextButton(
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    side: BorderSide(color: private,width: 0.5),
+                    padding: EdgeInsets.symmetric(vertical: 15,horizontal: 15),
+                    shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(10))
+                ),
+                onPressed: () async {
+                  if(private == Colors.red) {
+                    private = Colors.green;
+                  } else {
+                    private = Colors.red;
+                  }
+                  print((private == Colors.green));
+                  await ptx.screenshotSecurity((private == Colors.green));
+                  setState(() {});
+                },
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: double.maxFinite,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Security: Disable Screenshot",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: private
+                              ),
+                            ),
+                            SizedBox(height: 5,),
+                            Text("Private Screen ${(private == Colors.green)}",
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w300
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 30,child: Icon(Icons.arrow_forward_ios,color: Colors.blueGrey.shade200,),)
+                  ],
+                )),
           ),
 
           _button(
-            call: () {},
+            call: () {Navigator.push(context, MaterialPageRoute(builder: (context) => InfoDevice(),));},
             color: Colors.black,
             content: "Show All Device Information",
             title: "Device Info",

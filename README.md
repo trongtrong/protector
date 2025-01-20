@@ -1,4 +1,4 @@
-# flutter_protector (0.2.0)
+# flutter_protector (0.2.2)
 
 A Flutter plugin that provides device and platform-related security features.
 
@@ -41,7 +41,7 @@ This plugin offers various methods to enhance the security of your Flutter appli
 ## Getting Started
 
 
-## Android Permission 
+## Android Permission  use get imei , phone number and deviceId , check vpn proxy and sniffing
 
 
     ```bash

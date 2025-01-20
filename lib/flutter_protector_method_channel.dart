@@ -41,7 +41,7 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
   }
 
   @override
-  Future<bool?> isEmulator() async {
+  Future<bool?> isEmulatorOld() async {
     final isEmulator = await methodChannel.invokeMethod<bool>('isEmulator');
     return isEmulator;
   }

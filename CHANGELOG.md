@@ -8,6 +8,13 @@ This plugin offers various methods to enhance the security of your Flutter appli
 
 **Important Note:** While this plugin provides helpful checks, it's crucial to understand that no single method can guarantee complete security. Use these checks as part of a comprehensive security strategy that includes other best practices like code obfuscation, secure data storage, and server-side validation.
 
+## [0.1.2] - 2025-01-20
+
+### Fixed
+- release package 
+- update example and test
+- phone samsung device xiaomi huawei realme readme motorola success
+
 ## [0.1.2] - 2025-01-18
 
 ### Fixed

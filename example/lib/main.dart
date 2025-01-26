@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_protector/flutter_protector.dart';
 import 'package:flutter_protector_example/security_screen.dart';
 
 void main() async {

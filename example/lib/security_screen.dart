@@ -67,7 +67,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                   ),
                   child: Icon(Icons.shield,size: 65,color: colorPrime,),
                 ),
-                Container(width: double.maxFinite,height: double.maxFinite,
+                SizedBox(width: double.maxFinite,height: double.maxFinite,
                 child: (colorPrime == Colors.blueGrey) ? CircularProgressIndicator(
                   strokeWidth: 1.8,
                   color: colorPrime,
@@ -161,14 +161,13 @@ class _SecurityScreenState extends State<SecurityScreen> {
                   } else {
                     private = Colors.red;
                   }
-                  print((private == Colors.green));
                   await ptx.screenshotSecurity((private == Colors.green));
                   setState(() {});
                 },
                 child: Row(
                   children: [
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         width: double.maxFinite,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -225,7 +224,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
           child: Row(
             children: [
               Expanded(
-                child: Container(
+                child: SizedBox(
                   width: double.maxFinite,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -265,11 +264,10 @@ class _SecurityScreenState extends State<SecurityScreen> {
 
 
   init() async {
-    final checkEmulaturs = await ptx.screenshotSecurity(false);
-    final checkEmulatur = await ptx.isEmulatorSuper();
-    colorPrime = checkEmulatur! ? Colors.red : Colors.green;
-    final _countProblem = await ptx.checkResultSecurity();
-    countProblem = _countProblem!;
+    final checkEmulator = await ptx.isEmulatorSuper();
+    colorPrime = checkEmulator! ? Colors.red : Colors.green;
+    final countProblemData = await ptx.checkResultSecurity();
+    countProblem = countProblemData!;
     setState(() {
 
     });

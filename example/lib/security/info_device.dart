@@ -40,24 +40,6 @@ class _InfoDeviceState extends State<InfoDevice> {
     });
   }
 
-  Widget _buildBoolRow(String title, bool? value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-          ),
-          Spacer(),
-          Icon(
-            value == true ? Icons.check_circle : Icons.cancel,
-            color: value == true ? Colors.green : Colors.red,
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget _buildTextRow(String title, String? value) {
     return Padding(

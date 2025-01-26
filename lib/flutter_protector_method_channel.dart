@@ -57,7 +57,6 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
         return null;
       }
     } catch (e) {
-      print("Error fetching build info: $e");
       return null;
     }
   }
@@ -78,7 +77,6 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
       final result = await methodChannel.invokeMethod<Map<dynamic, dynamic>>('getBuildInfo');
       return Map<String, dynamic>.from(result ?? {});
     } catch (e) {
-      print("Error fetching build info: $e");
       return null;
     }
   }

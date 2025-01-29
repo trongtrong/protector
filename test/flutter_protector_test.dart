@@ -11,10 +11,10 @@ class MockFlutterProtectorPlatform
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 
-  @override
-  Future<bool?> isEmulatorOld() {
-    throw UnimplementedError();
-  }
+  // @override
+  // Future<bool?> isEmulatorOld() {
+  //   throw UnimplementedError();
+  // }
 
   @override
   Future<String?> getLocalIpAddress() {

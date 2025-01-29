@@ -36,11 +36,7 @@ class FlutterProtector {
   //   }
   // }
 
-  /// Checks if the device is running on an emulator.
-  /// This method delegates the call to the platform-specific implementation.
-  Future<bool?> isEmulatorOld() async {
-    return FlutterProtectorPlatform.instance.isEmulatorOld();
-  }
+
   /// Checks if the device is running on an emulator.
   /// This method delegates the call to the platform-specific implementation.
   Future<bool?> isEmulatorSuper() async {

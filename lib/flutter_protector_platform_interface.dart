@@ -22,11 +22,11 @@ abstract class FlutterProtectorPlatform extends PlatformInterface {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
-
-  Future<bool?> isEmulatorOld() async {
-    // TODO: Implement logic to detect if the device is an emulator.
-    throw UnimplementedError('Emulator detection has not been implemented.');
-  }
+  //
+  // Future<bool?> isEmulatorOld() async {
+  //   // TODO: Implement logic to detect if the device is an emulator.
+  //   throw UnimplementedError('Emulator detection has not been implemented.');
+  // }
 
   Future<bool?> isDeviceRooted() async {
     // TODO: Implement logic to detect if the device is an emulator.

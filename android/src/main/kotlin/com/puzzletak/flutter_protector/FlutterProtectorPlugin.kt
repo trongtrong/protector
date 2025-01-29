@@ -57,7 +57,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     try {
       when (call.method) {
-        "isEmulatorOld" -> result.success(isEmulatorOld())
+//        "isEmulatorOld" -> result.success(isEmulatorOld())
         "isEmulatorSuper" -> handleAsyncCall(result) { isEmulatorSuper() }
         "checkResultSecurityInfo" -> handleAsyncCall(result) { checkResultSecurityInfo() }
         "checkResultSecurity" -> handleAsyncCall(result) { checkResultSecurity() }

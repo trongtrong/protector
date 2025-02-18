@@ -72,6 +72,16 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
     return isEmulator;
   }
   @override
+  Future<bool?> checkTelephonyManager() async {
+    final isEmulator = await methodChannel.invokeMethod<bool>('checkTelephonyManager');
+    return isEmulator;
+  }
+  @override
+  Future<bool?> isBlueStacks() async {
+    final isEmulator = await methodChannel.invokeMethod<bool>('isBlueStacks');
+    return isEmulator;
+  }
+  @override
   Future<Map<String, dynamic>?> getBuildInfo() async {
     try {
       final result = await methodChannel.invokeMethod<Map<dynamic, dynamic>>('getBuildInfo');

@@ -94,6 +94,16 @@ class MockFlutterProtectorPlatform
   Future<bool?> screenshotSecurity(bool enable) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<bool?> checkTelephonyManager() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> isBlueStacks() {
+    throw UnimplementedError();
+  }
 }
 
 void main() {

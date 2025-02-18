@@ -43,6 +43,14 @@ class FlutterProtector {
     return FlutterProtectorPlatform.instance.isEmulatorSuper();
   }
 
+  Future<bool?> isBlueStacks() async {
+    return FlutterProtectorPlatform.instance.isBlueStacks();
+  }
+
+  Future<bool?> checkTelephonyManager() async {
+    return FlutterProtectorPlatform.instance.checkTelephonyManager();
+  }
+
   /// Checks if the device is rooted (Android) or jailbroken (iOS).
   /// This method delegates the call to the platform-specific implementation.
   Future<bool?> isDeviceRooted() async {

@@ -65,6 +65,8 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         "screenshotSecurity" -> handleScreenshotSecurityCall(call, result)
         "isDeviceRooted" -> result.success(isDeviceRooted())
         "getBuildInfo" -> result.success(getBuildInfo())
+        "checkTelephonyManager" -> result.success(checkTelephonyManager())
+        "isBlueStacks" -> result.success(isBlueStacks())
         "phoneNumber" -> result.success(phoneNumber())
         "deviceId" -> result.success(deviceId())
         "isVpnConnected" -> result.success(isVpnConnected())
@@ -136,6 +138,14 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
       continuation.resumeWithException(e)
     }
   }
+
+  private fun checkTelephonyManager():Boolean{
+    return PuzzleTakProtectorLib.checkTelephonyManager(context)
+  }
+  private fun isBlueStacks():Boolean{
+    return PuzzleTakProtectorLib.isBlueStacks()
+  }
+
 
   private suspend fun checkResultSecurityInfo(): Map<String, Any> = suspendCoroutine { continuation ->
     try {

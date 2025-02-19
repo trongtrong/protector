@@ -127,7 +127,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     try {
       PuzzleTakProtectorLib.checkIsRunningInEmulatorPT(context, object : EmulatorSuperCheckCallback {
         override fun checkEmulator(emulatorInfo: Int) {
-          continuation.resume(emulatorInfo >= 2 && isBlueStacks() && checkTelephonyManager())
+          continuation.resume(emulatorInfo >= 2)
         }
 
         override fun findEmulator(emulatorInfo: String) {}

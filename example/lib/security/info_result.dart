@@ -60,8 +60,10 @@ class _InfoResultState extends State<InfoResult> {
     result["Checked Root Device"] = root;
 
 
-    final isEmulator = await flutterProtector.isEmulatorSuper();
-    result["Checked Emulator Device"] = isEmulator;
+    final checkEmulator = await flutterProtector.isEmulatorSuper();
+    final checkBlueStacks = await flutterProtector.isEmulatorSuper();
+    final checkManager = await flutterProtector.isEmulatorSuper();
+    result["Checked Emulator Device"] = (checkEmulator! || checkBlueStacks! || checkManager!);
 
 
     final setProxy = await flutterProtector.isProxySet();

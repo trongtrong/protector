@@ -1,4 +1,4 @@
-# flutter_protector (0.2.9)
+# flutter_protector (0.3.0)
 
 A Flutter plugin that provides device and platform-related security features.
 
@@ -8,10 +8,16 @@ This plugin offers various methods to enhance the security of your Flutter appli
 
 **Important Note:** While this plugin provides helpful checks, it's crucial to understand that no single method can guarantee complete security. Use these checks as part of a comprehensive security strategy that includes other best practices like code obfuscation, secure data storage, and server-side validation.
 
+## [0.3.0] - 2025-02-19
+
+### Fixed
+- release package
+- update isEmulator
+- add method checkTelephonyManager and isBlueStacks
 ## [0.1.2] - 2025-01-20
 
 ### Fixed
-- release package 
+- release package
 - update example and test
 - phone samsung device xiaomi huawei realme readme motorola success
 

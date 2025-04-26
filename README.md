@@ -1,4 +1,5 @@
 # flutter_protector (0.3.6)
+[![pub package](https://img.shields.io/pub/v/flutter_protector)](https://pub.dev/packages/flutter_protector)
 
 A Flutter plugin that provides device and platform-related security features.
 

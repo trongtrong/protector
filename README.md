@@ -1,4 +1,4 @@
-# flutter_protector (0.3.5)
+# flutter_protector (0.3.6)
 
 A Flutter plugin that provides device and platform-related security features.
 
@@ -38,7 +38,7 @@ To use this plugin, add `flutter_protector` as a dependency in your `pubspec.yam
 
 ```yaml
 dependencies:
-  flutter_protector: ^0.3.5
+  flutter_protector: ^0.3.6
 ```
 
 ### Example

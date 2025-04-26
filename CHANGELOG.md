@@ -1,4 +1,4 @@
-# flutter_protector (0.3.5)
+# flutter_protector (0.3.6)
 
 A Flutter plugin that provides device and platform-related security features.
 
@@ -55,7 +55,7 @@ This plugin is designed to strengthen your app's security layer through device i
 
 ## 📜 Changelog
 
-### [0.3.5] - 2025-02-19
+### [0.3.6] - 2025-04-26
 - Improved emulator detection.
 - Added security detail result checks.
 - Fixed issues on Samsung devices (A21, A10, A31, A52, A51).

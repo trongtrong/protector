@@ -64,6 +64,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         "checkForSniffingApps" -> handleSniffingAppsCall(call, result)
         "screenshotSecurity" -> handleScreenshotSecurityCall(call, result)
         "isDeviceRooted" -> result.success(isDeviceRooted())
+        "infoEmulatorCheckResult" -> handleAsyncCall(result) { infoEmulatorCheckResult() }
         "getBuildInfo" -> result.success(getBuildInfo())
         "checkTelephonyManager" -> result.success(checkTelephonyManager())
         "isBlueStacks" -> result.success(isBlueStacks())
@@ -123,21 +124,39 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
   }
 
-  private suspend fun isEmulatorSuper(): Boolean = suspendCoroutine { continuation ->
-    try {
-      PuzzleTakProtectorLib.checkIsRunningInEmulatorPT(context, object : EmulatorSuperCheckCallback {
-        override fun checkEmulator(emulatorInfo: Int) {
-          continuation.resume(emulatorInfo >= 2)
+    private suspend fun isEmulatorSuper(): Boolean = suspendCoroutine { continuation ->
+        try {
+            PuzzleTakProtectorLib.checkIsRunningInEmulatorPT(context, object : EmulatorSuperCheckCallback {
+                override fun checkEmulator(emulatorInfo: Int) {
+                    continuation.resume(emulatorInfo >= 2)
+                }
+
+                override fun findEmulator(emulatorInfo: String) {}
+
+                override fun detailsEmulator(emulatorInfo: MutableMap<String, Any>?) {}
+            })
+        } catch (e: Exception) {
+            continuation.resumeWithException(e)
         }
-
-        override fun findEmulator(emulatorInfo: String) {}
-
-        override fun detailsEmulator(emulatorInfo: MutableMap<String, Any>?) {}
-      })
-    } catch (e: Exception) {
-      continuation.resumeWithException(e)
     }
-  }
+
+    private suspend fun infoEmulatorCheckResult(): String = suspendCoroutine { continuation ->
+        try {
+            PuzzleTakProtectorLib.checkIsRunningInEmulatorPT(context, object : EmulatorSuperCheckCallback {
+                override fun checkEmulator(emulatorInfo: Int) {
+
+                }
+
+                override fun findEmulator(emulatorInfo: String) {
+                    continuation.resume(emulatorInfo)
+                }
+
+                override fun detailsEmulator(emulatorInfo: MutableMap<String, Any>?) {}
+            })
+        } catch (e: Exception) {
+            continuation.resumeWithException(e)
+        }
+    }
 
   private fun checkTelephonyManager():Boolean{
     return PuzzleTakProtectorLib.checkTelephonyManager(context)

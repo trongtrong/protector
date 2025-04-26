@@ -104,6 +104,11 @@ class MockFlutterProtectorPlatform
   Future<bool?> isBlueStacks() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<String?> infoEmulatorCheckResult() {
+    throw UnimplementedError();
+  }
 }
 
 void main() {

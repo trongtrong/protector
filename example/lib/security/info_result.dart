@@ -27,6 +27,7 @@ class _InfoResultState extends State<InfoResult> {
           _buildBoolRow('Is DeveloperOptions Enabled', result['Is DeveloperOptions Enabled']),
           _buildBoolRow('Is Sniffing Apps', result['Is Sniffing Apps']),
           _buildBoolRow('Is Vpn Connected', result['Is Vpn Connected']),
+          _buildBoolRow('Is BlueStacks', result['Is BlueStacks']),
           _buildBoolRow('Support Camera Flash', result['supportCameraFlash']),
           _buildBoolRow('Support Bluetooth', result['supportBluetooth']),
           _buildBoolRow('Support Camera', result['supportCamera']),
@@ -36,6 +37,9 @@ class _InfoResultState extends State<InfoResult> {
           _buildTextRow('Model', result['model']),
           _buildTextRow('BaseBand', result['baseBand']),
           _buildTextRow('Board', result['board']),
+          _buildTextRow('suspectCount', result['suspectCount'].toString()),
+          _buildTextRow('cgroupResult', result['cgroupResult'].toString()),
+          // Text(result['Emulator Info']),
         ],
       ),
     );
@@ -49,6 +53,7 @@ class _InfoResultState extends State<InfoResult> {
 
   init() async {
     final pt = await flutterProtector.checkResultSecurityInfo();
+    print(pt);
     result = pt!;
 
 
@@ -81,6 +86,13 @@ class _InfoResultState extends State<InfoResult> {
 
     final checkForSniffingApps = await flutterProtector.checkForSniffingApps([]);
     result["Is Sniffing Apps"] = checkForSniffingApps;
+
+    final isBlueStacks = await flutterProtector.isBlueStacks();
+    result["Is BlueStacks"] = isBlueStacks;
+
+
+
+    // result["Emulator Info"] = emulatorInfo;
 
 
     setState(() {

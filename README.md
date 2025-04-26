@@ -1,8 +1,6 @@
-# flutter\_protector (0.3.1)
+# flutter_protector (0.3.5)
 
 A Flutter plugin that provides device and platform-related security features.
-
-&#x20;
 
 This plugin offers various methods to enhance the security of your Flutter applications by providing information about the device and platform. It includes checks for emulator detection, root/jailbreak status, sniffing apps, VPN connection status, proxy settings, and more.
 
@@ -34,14 +32,13 @@ This plugin offers various methods to enhance the security of your Flutter appli
 - **BaseBand:** Retrieves the baseband version of the device.
 - **Board:** Retrieves the device's board information.
 
-
 ## Usage
 
 To use this plugin, add `flutter_protector` as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_protector: ^0.3.1
+  flutter_protector: ^0.3.5
 ```
 
 ### Example
@@ -120,4 +117,3 @@ class _InfoResultState extends State<InfoResult> {
   }
 }
 ```
-

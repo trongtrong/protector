@@ -1,0 +1,28 @@
+{
+  "buildFiles": [
+    "E:\\flutter-sdk\\src\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "E:\\AndroidSDKSuper\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\RayaParsProject\\Package\\puzzletak\\flutter_protector\\example\\android\\app\\.cxx\\Debug\\5b1g621f\\armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "E:\\AndroidSDKSuper\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\RayaParsProject\\Package\\puzzletak\\flutter_protector\\example\\android\\app\\.cxx\\Debug\\5b1g621f\\armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {},
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "E:\\AndroidSDKSuper\\ndk\\27.0.12077973\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "E:\\AndroidSDKSuper\\ndk\\27.0.12077973\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": []
+}

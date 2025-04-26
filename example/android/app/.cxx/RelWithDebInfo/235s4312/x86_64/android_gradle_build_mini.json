@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "E:\\flutter-sdk\\src\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "E:\\AndroidSDKSuper\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\RayaParsProject\\Package\\puzzletak\\flutter_protector\\example\\android\\app\\.cxx\\RelWithDebInfo\\235s4312\\x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "E:\\AndroidSDKSuper\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\RayaParsProject\\Package\\puzzletak\\flutter_protector\\example\\android\\app\\.cxx\\RelWithDebInfo\\235s4312\\x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

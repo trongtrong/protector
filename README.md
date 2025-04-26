@@ -7,8 +7,8 @@ This plugin offers various methods to enhance the security of your Flutter appli
 **Important Note:** While this plugin provides helpful checks, it's crucial to understand that no single method can guarantee complete security. Use these checks as part of a comprehensive security strategy that includes other best practices like code obfuscation, secure data storage, and server-side validation.
 
 **Demo:**
-
-## Features
+ 
+## Features 
 
 - **Platform Version:** Retrieves the platform version (e.g., Android 13).
 - **Emulator Detection:** Checks if the app is running on an emulator (Android).

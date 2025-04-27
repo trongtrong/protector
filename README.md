@@ -1,4 +1,4 @@
-# flutter_protector (0.3.6)
+# flutter_protector (0.3.7)
 [![pub package](https://img.shields.io/pub/v/flutter_protector)](https://pub.dev/packages/flutter_protector)
 
 A Flutter plugin that provides device and platform-related security features.
@@ -39,7 +39,7 @@ To use this plugin, add `flutter_protector` as a dependency in your `pubspec.yam
 
 ```yaml
 dependencies:
-  flutter_protector: ^0.3.6
+  flutter_protector: ^0.3.7
 ```
 
 ### Example

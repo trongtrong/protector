@@ -14,7 +14,7 @@ This plugin is designed to strengthen your app's security layer through device i
 
 ---
 
-<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/device.jpg?raw=true" alt="image_demo" width="600" height="500">
+<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen (1).jpg?raw=true" alt="image_demo" width="600" height="500">
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/s1.jpg?raw=true" alt="image_demo" width="260" height="600">
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/s2.jpg?raw=true" alt="image_demo" width="260" height="600">
 

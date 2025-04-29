@@ -18,12 +18,11 @@ This plugin is designed to strengthen your app's security layer through device i
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(1).jpg?raw=true" alt="image_demo" width="260" height="600">
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(2).jpg?raw=true" alt="image_demo" width="260" height="600">
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(3).jpg?raw=true" alt="image_demo" width="260" height="600">
-<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(4).jpg?raw=true" alt="image_demo" width="260" height="600">
 </div>
 <div style="display: flex; justify-content: space-between;">
-<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(5).jpg?raw=true" alt="image_demo" width="260" height="600">
+<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(7).jpg?raw=true" alt="image_demo" width="260" height="600">
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(6).jpg?raw=true" alt="image_demo" width="260" height="600">
-<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(1).jpg?raw=true" alt="image_demo" width="260" height="600">
+<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(5).jpg?raw=true" alt="image_demo" width="260" height="600">
 </div>
 
 ## 🚀 Features

@@ -1,4 +1,4 @@
-# flutter_protector (0.3.7)
+# flutter_protector (0.4.0)
 [![pub package](https://img.shields.io/pub/v/flutter_protector)](https://pub.dev/packages/flutter_protector)
 [![pub points](https://img.shields.io/pub/points/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
 [![likes](https://img.shields.io/pub/likes/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
@@ -70,7 +70,7 @@ To use this plugin, add `flutter_protector` as a dependency in your `pubspec.yam
 
 ```yaml
 dependencies:
-  flutter_protector: ^0.3.7
+  flutter_protector: ^0.4.0
 ```
 
 ### Example

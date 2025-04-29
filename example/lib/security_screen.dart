@@ -10,6 +10,7 @@ import 'package:flutter_protector/flutter_protector.dart';
 import 'package:flutter_protector_example/security/info_device.dart';
 import 'package:flutter_protector_example/security/info_request.dart';
 import 'package:flutter_protector_example/security/info_result.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SecurityScreen extends StatefulWidget {
   const SecurityScreen({super.key});
@@ -132,7 +133,9 @@ class _SecurityScreenState extends State<SecurityScreen> {
               style: TextButton.styleFrom(
                 backgroundColor: Colors.blue
               ),
-              onPressed: (){}, child: Row(
+              onPressed: (){
+                launchUrl(Uri.parse("https://t.me/puzzletak"));
+              }, child: Row(
             spacing: 5,
             mainAxisSize: MainAxisSize.min,
             children: [

@@ -3,7 +3,7 @@
 [![pub points](https://img.shields.io/pub/points/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
 [![likes](https://img.shields.io/pub/likes/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
 [![popularity](https://img.shields.io/pub/popularity/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
-[![platform](https://img.shields.io/badge/platform-android%20%7C%20ios%20%7C%20web-blue)](https://pub.dev/packages/flutter_protector
+[![platform](https://img.shields.io/badge/platform-android%20%7C%20ios%20%7C%20web-blue)](https://pub.dev/packages/flutter_protector)
 
 ---
 

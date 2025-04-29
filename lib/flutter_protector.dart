@@ -102,6 +102,55 @@ class FlutterProtector {
     return FlutterProtectorPlatform.instance.getLocalIpAddress();
   }
 
+
+  Future<void> openDeveloperOption() async {
+    return FlutterProtectorPlatform.instance.openDeveloperOption();
+  }
+
+  Future<void> openLocationSettings() async {
+    return FlutterProtectorPlatform.instance.openLocationSettings();
+  }
+
+  Future<void> openBluetoothSettings() async {
+    return FlutterProtectorPlatform.instance.openBluetoothSettings();
+  }
+
+  Future<void> openDataUsageSettings() async {
+    return FlutterProtectorPlatform.instance.openDataUsageSettings();
+  }
+
+  Future<void> openSecuritySettings() async {
+    return FlutterProtectorPlatform.instance.openSecuritySettings();
+  }
+
+  Future<void> openAccessibilitySettings() async {
+    return FlutterProtectorPlatform.instance.openAccessibilitySettings();
+  }
+
+  Future<void> openDisplaySettings() async {
+    return FlutterProtectorPlatform.instance.openDisplaySettings();
+  }
+
+  Future<void> openSoundSettings() async {
+    return FlutterProtectorPlatform.instance.openSoundSettings();
+  }
+
+  Future<void> openVpnSettings() async {
+    return FlutterProtectorPlatform.instance.openVpnSettings();
+  }
+
+  Future<void> openBatteryOptimizationSettings() async {
+    return FlutterProtectorPlatform.instance.openBatteryOptimizationSettings();
+  }
+
+  Future<bool?> isBatteryOptimizationEnabled() async {
+    return FlutterProtectorPlatform.instance.isBatteryOptimizationEnabled();
+  }
+
+  Future<void> requestDisableBatteryOptimization() async {
+    return FlutterProtectorPlatform.instance.requestDisableBatteryOptimization();
+  }
+
   Future<String?> phoneNumber() async {
     return FlutterProtectorPlatform.instance.phoneNumber();
   }

@@ -64,6 +64,21 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         "checkForSniffingApps" -> handleSniffingAppsCall(call, result)
         "screenshotSecurity" -> handleScreenshotSecurityCall(call, result)
         "isDeviceRooted" -> result.success(isDeviceRooted())
+        "openDeveloperOption" -> result.success(openDeveloperOption())
+        "openLocationSettings" -> result.success(openLocationSettings())
+        "openBluetoothSettings" -> result.success(openBluetoothSettings())
+        "openDataUsageSettings" -> result.success(openDataUsageSettings())
+        "openSecuritySettings" -> result.success(openSecuritySettings())
+        "openAccessibilitySettings" -> result.success(openAccessibilitySettings())
+        "openDisplaySettings" -> result.success(openDisplaySettings())
+        "openSoundSettings" -> result.success(openSoundSettings())
+        "openVpnSettings" -> result.success(openVpnSettings())
+        "openBatteryOptimizationSettings" -> result.success(openBatteryOptimizationSettings())
+        "isBatteryOptimizationEnabled" -> result.success(isBatteryOptimizationEnabled())
+        "requestDisableBatteryOptimization" -> {
+              requestDisableBatteryOptimization()
+              result.success(null)
+          }
         "infoEmulatorCheckResult" -> handleAsyncCall(result) { infoEmulatorCheckResult() }
         "getBuildInfo" -> result.success(getBuildInfo())
         "checkTelephonyManager" -> result.success(checkTelephonyManager())
@@ -231,6 +246,19 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   private fun isVpnConnected(): Boolean = VpnDetector.isVpnConnected(context)
 
   private fun isDeveloperOptionsEnabled(): Boolean = DeveloperOptionsChecker.isDeveloperOptionsEnabled(context)
+
+  private fun openDeveloperOption() = DeveloperOptionsChecker.openDeveloperOption(context)
+  private fun openLocationSettings() = DeveloperOptionsChecker.openLocationSettings(context)
+  private fun openBluetoothSettings() = DeveloperOptionsChecker.openBluetoothSettings(context)
+  private fun openDataUsageSettings() = DeveloperOptionsChecker.openDataUsageSettings(context)
+  private fun openSecuritySettings() = DeveloperOptionsChecker.openSecuritySettings(context)
+  private fun openAccessibilitySettings() = DeveloperOptionsChecker.openAccessibilitySettings(context)
+  private fun openDisplaySettings() = DeveloperOptionsChecker.openDisplaySettings(context)
+  private fun openSoundSettings() = DeveloperOptionsChecker.openSoundSettings(context)
+  private fun openVpnSettings() = DeveloperOptionsChecker.openVpnSettings(context)
+  private fun openBatteryOptimizationSettings() = BatteryOptimizationHelper.openBatteryOptimizationSettings(context)
+  private fun isBatteryOptimizationEnabled() = BatteryOptimizationHelper.isBatteryOptimizationEnabled(context)
+  private fun requestDisableBatteryOptimization() = BatteryOptimizationHelper.requestDisableBatteryOptimization(context)
 
   private fun isProxySet(): Boolean = VpnDetector.isProxySet()
 

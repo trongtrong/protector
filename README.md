@@ -1,37 +1,62 @@
 # flutter_protector (0.3.7)
 [![pub package](https://img.shields.io/pub/v/flutter_protector)](https://pub.dev/packages/flutter_protector)
+[![pub points](https://img.shields.io/pub/points/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
+[![likes](https://img.shields.io/pub/likes/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
+[![popularity](https://img.shields.io/pub/popularity/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
+[![platform](https://img.shields.io/badge/platform-android%20%7C%20ios%20%7C%20web-blue)](https://pub.dev/packages/flutter_protector
 
-A Flutter plugin that provides device and platform-related security features.
+---
 
-This plugin offers various methods to enhance the security of your Flutter applications by providing information about the device and platform. It includes checks for emulator detection, root/jailbreak status, sniffing apps, VPN connection status, proxy settings, and more.
+## Overview
 
-**Important Note:** While this plugin provides helpful checks, it's crucial to understand that no single method can guarantee complete security. Use these checks as part of a comprehensive security strategy that includes other best practices like code obfuscation, secure data storage, and server-side validation.
+**flutter_protector** helps secure your Flutter apps by detecting emulator usage, root/jailbreak status, VPN connections, proxy settings, battery optimization status, and potential sniffing apps.  
+This plugin is designed to strengthen your app's security layer through device integrity verification and access to system-level settings for additional protection.
 
-**Demo:**
- 
-## Features 
+---
 
-- **Platform Version:** Retrieves the platform version (e.g., Android 13).
-- **Emulator Detection:** Checks if the app is running on an emulator (Android).
-- **Root/Jailbreak Detection:** Checks if the device is rooted (Android).
-- **Sniffing App Detection:** Checks for the presence of known sniffing apps.
-- **VPN Connection Detection:** Checks if a VPN is currently connected.
+<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/device.jpg?raw=true" alt="image_demo" width="600" height="500">
+<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/s1.jpg?raw=true" alt="image_demo" width="260" height="600">
+<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/s2.jpg?raw=true" alt="image_demo" width="260" height="600">
+
+
+## 🚀 Features
+
+- **Platform Version:** Detects platform OS version (Android/iOS).
+- **Emulator Detection:** Identifies if the app is running on an emulator (Android), including:
+    - `isEmulatorSuper()`
+    - `infoEmulatorCheckResult()`
+    - `checkTelephonyManager()`
+    - `isBlueStacks()`
+- **Root/Jailbreak Detection:** Checks if the device is rooted (Android) or jailbroken (iOS).
+- **Sniffing App Detection:** Detects known network sniffing apps using `checkForSniffingApps()`.
+- **VPN Detection:**
+    - Identifies active VPN connections.
+    - Detects VPN using network interfaces.
 - **Proxy Detection:** Checks if a proxy is set on the device.
-- **Local IP Address:** Retrieves the local IP address of the device.
-- **Public IP Check:** Checks if the device's IP address is a public IP.
-- **VPN Using Network Interface Check:** Checks if the VPN is using a network interface (if a VPN is connected).
-- **Target Platform Web Launch Mode:** Detects target platform when running on the web.
-- **IMEI:** Get the device's IMEI (imei).
-- **Phone Number:** Get the device's phone number (phoneNumber).
-- **Device ID:** Retrieve the device ID (deviceId).
-- **Support Camera Flash:** Checks if the device supports a camera flash.
-- **Support Bluetooth:** Checks if the device supports Bluetooth.
-- **Support Camera:** Checks if the device has camera support.
-- **Has Light Sensor:** Checks if the device has a light sensor.
-- **Manufacturer:** Retrieves the device manufacturer.
-- **Model:** Retrieves the device model.
-- **BaseBand:** Retrieves the baseband version of the device.
-- **Board:** Retrieves the device's board information.
+- **Local IP Address:** Retrieves the local IP address.
+- **Public IP Check:** Determines if the device has a public IP.
+- **Developer Options Detection:** Detects if Developer Options are enabled.
+- **Phone Info Access:**
+    - Retrieve phone number (`phoneNumber()`)
+    - Retrieve device ID (`deviceId()`)
+    - Get build info (`getBuildInfo()`)
+- **Screenshot Security:** Enable or disable screenshot security to prevent screen capture.
+- **Battery Optimization:**
+    - Check if battery optimization is enabled
+    - Request user to disable battery optimization
+    - Open battery optimization settings
+- **System Settings Access:**
+    - Open Developer Options
+    - Open Location Settings
+    - Open Bluetooth Settings
+    - Open Data Usage Settings
+    - Open Security Settings
+    - Open Accessibility Settings
+    - Open Display Settings
+    - Open Sound Settings
+    - Open VPN Settings
+- **Web Support:** Detects the target platform when running on the web.
+
 
 ## Usage
 

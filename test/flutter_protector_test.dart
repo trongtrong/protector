@@ -109,6 +109,66 @@ class MockFlutterProtectorPlatform
   Future<String?> infoEmulatorCheckResult() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<bool?> isBatteryOptimizationEnabled() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openAccessibilitySettings() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openBatteryOptimizationSettings() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openBluetoothSettings() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openDataUsageSettings() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openDeveloperOption() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openDisplaySettings() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openLocationSettings() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openSecuritySettings() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openSoundSettings() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> openVpnSettings() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> requestDisableBatteryOptimization() {
+    throw UnimplementedError();
+  }
 }
 
 void main() {

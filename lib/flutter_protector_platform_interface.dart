@@ -74,6 +74,53 @@ abstract class FlutterProtectorPlatform extends PlatformInterface {
     // TODO: Implement logic to detect if the device is an emulator.
     throw UnimplementedError('Emulator detection has not been implemented.');
   }
+  Future<void> openDeveloperOption() {
+    throw UnimplementedError('openDeveloperOption() has not been implemented.');
+  }
+
+  Future<void> openLocationSettings() {
+    throw UnimplementedError('openLocationSettings() has not been implemented.');
+  }
+
+  Future<void> openBluetoothSettings() {
+    throw UnimplementedError('openBluetoothSettings() has not been implemented.');
+  }
+
+  Future<void> openDataUsageSettings() {
+    throw UnimplementedError('openDataUsageSettings() has not been implemented.');
+  }
+
+  Future<void> openSecuritySettings() {
+    throw UnimplementedError('openSecuritySettings() has not been implemented.');
+  }
+
+  Future<void> openAccessibilitySettings() {
+    throw UnimplementedError('openAccessibilitySettings() has not been implemented.');
+  }
+
+  Future<void> openDisplaySettings() {
+    throw UnimplementedError('openDisplaySettings() has not been implemented.');
+  }
+
+  Future<void> openSoundSettings() {
+    throw UnimplementedError('openSoundSettings() has not been implemented.');
+  }
+
+  Future<void> openVpnSettings() {
+    throw UnimplementedError('openVpnSettings() has not been implemented.');
+  }
+
+  Future<void> openBatteryOptimizationSettings() {
+    throw UnimplementedError('openBatteryOptimizationSettings() has not been implemented.');
+  }
+
+  Future<bool?> isBatteryOptimizationEnabled() {
+    throw UnimplementedError('isBatteryOptimizationEnabled() has not been implemented.');
+  }
+
+  Future<void> requestDisableBatteryOptimization() {
+    throw UnimplementedError('requestDisableBatteryOptimization() has not been implemented.');
+  }
 
   Future<String?> getPlatformVersion() {
     // TODO: Implement logic to fetch platform version.

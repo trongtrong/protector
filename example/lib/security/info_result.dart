@@ -18,7 +18,7 @@ class _InfoResultState extends State<InfoResult> {
     return Scaffold(
       appBar: AppBar(title: Text("Info Security Result")),
       body: loading ? Center(child: CircularProgressIndicator(strokeWidth: 1.8,),) : ListView(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(5),
         children: [
           _buildTextRow('Platform Version', result['Platform Version']),
           _buildBoolRow('Checked Root Device', result['Checked Root Device']),
@@ -103,42 +103,92 @@ class _InfoResultState extends State<InfoResult> {
 
   Widget _buildBoolRow(String title, bool? value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 8,
+              offset: Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              Icon(
+                value == true ? Icons.check_circle : Icons.cancel,
+                color: value == true ? Colors.green : Colors.red,
+                size: 28,
+              ),
+            ],
           ),
-          Spacer(),
-          Icon(
-            value == true ? Icons.check_circle : Icons.cancel,
-            color: value == true ? Colors.green : Colors.red,
-          ),
-        ],
+        ),
       ),
     );
   }
 
+
   Widget _buildTextRow(String title, String? value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-          ),
-          SizedBox(width: 150,),
-          Flexible(
-            child: Text(
-              value ?? 'N/A',
-              style: TextStyle(fontSize: 14, color: Colors.blueGrey),
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 8,
+              offset: Offset(0, 4),
             ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                value ?? 'N/A',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: value == null || value.isEmpty ? Colors.red : Colors.blueGrey,
+                  fontWeight: FontWeight.w500,
+                ),
+                overflow: TextOverflow.visible,
+                maxLines: 30,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
+
+
 }

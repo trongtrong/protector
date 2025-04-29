@@ -3,32 +3,58 @@
 A Flutter plugin that provides device and platform-related security features.
 
 [![pub package](https://img.shields.io/pub/v/flutter_protector)](https://pub.dev/packages/flutter_protector)
+[![pub points](https://img.shields.io/pub/points/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
+[![likes](https://img.shields.io/pub/likes/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
+[![popularity](https://img.shields.io/pub/popularity/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
+[![platform](https://img.shields.io/badge/platform-android%20%7C%20ios%20%7C%20web-blue)](https://pub.dev/packages/flutter_protector)
 
 ---
 
 ## Overview
 
-**flutter_protector** helps secure your Flutter apps by detecting emulator usage, root/jailbreak status, VPN connections, proxy settings, and potential sniffing apps.  
-This plugin is designed to strengthen your app's security layer through device integrity verification.
-
-> ⚠️ **Important:** While this plugin adds security checks, no single method can guarantee 100% protection. Always combine it with best practices such as code obfuscation, encrypted storage, and server-side validation.
+**flutter_protector** helps secure your Flutter apps by detecting emulator usage, root/jailbreak status, VPN connections, proxy settings, battery optimization status, and potential sniffing apps.  
+This plugin is designed to strengthen your app's security layer through device integrity verification and access to system-level settings for additional protection.
 
 ---
 
 ## 🚀 Features
 
 - **Platform Version:** Detects platform OS version (Android/iOS).
-- **Emulator Detection:** Identifies if the app is running on an emulator (Android).
+- **Emulator Detection:** Identifies if the app is running on an emulator (Android), including:
+    - `isEmulatorSuper()`
+    - `infoEmulatorCheckResult()`
+    - `checkTelephonyManager()`
+    - `isBlueStacks()`
 - **Root/Jailbreak Detection:** Checks if the device is rooted (Android) or jailbroken (iOS).
-- **Sniffing App Detection:** Detects known network sniffing apps.
-- **VPN Detection:** Identifies active VPN connections.
+- **Sniffing App Detection:** Detects known network sniffing apps using `checkForSniffingApps()`.
+- **VPN Detection:**
+    - Identifies active VPN connections.
+    - Detects VPN using network interfaces.
 - **Proxy Detection:** Checks if a proxy is set on the device.
 - **Local IP Address:** Retrieves the local IP address.
 - **Public IP Check:** Determines if the device has a public IP.
-- **VPN Interface Check:** Detects VPNs using network interfaces.
-- **Target Platform Detection on Web:** Detects the target platform when running on web.
+- **Developer Options Detection:** Detects if Developer Options are enabled.
+- **Phone Info Access:**
+    - Retrieve phone number (`phoneNumber()`)
+    - Retrieve device ID (`deviceId()`)
+    - Get build info (`getBuildInfo()`)
+- **Screenshot Security:** Enable or disable screenshot security to prevent screen capture.
+- **Battery Optimization:**
+    - Check if battery optimization is enabled
+    - Request user to disable battery optimization
+    - Open battery optimization settings
+- **System Settings Access:**
+    - Open Developer Options
+    - Open Location Settings
+    - Open Bluetooth Settings
+    - Open Data Usage Settings
+    - Open Security Settings
+    - Open Accessibility Settings
+    - Open Display Settings
+    - Open Sound Settings
+    - Open VPN Settings
+- **Web Support:** Detects the target platform when running on the web.
 
----
 
 ## 📦 Getting Started
 
@@ -54,6 +80,22 @@ This plugin is designed to strengthen your app's security layer through device i
 ---
 
 ## 📜 Changelog
+### [0.4.0] - 2025-04-29
+- Added support for:
+    - Opening Developer Options
+    - Opening VPN Settings
+    - Opening Bluetooth Settings
+    - Opening Display Settings
+    - Opening Sound Settings
+    - Opening Data Usage Settings
+    - Opening Security Settings
+    - Opening Accessibility Settings
+    - Opening Location Settings
+    - Battery Optimization Status Check
+    - Requesting to Disable Battery Optimization
+    - Screenshot Security Toggle
+- Added platform delegation methods in `FlutterProtector` class
+- Fixed bug on tablet detection
 
 ### [0.3.7] - 2025-04-27
 - Fixed Bug Tablet

@@ -100,6 +100,66 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
     final isEmulator = await methodChannel.invokeMethod<bool>('isDeviceRooted');
     return isEmulator;
   }
+
+  @override
+  Future<void> openDeveloperOption() async {
+    return await methodChannel.invokeMethod('openDeveloperOption');
+  }
+
+  @override
+  Future<void> openLocationSettings() async {
+    return await methodChannel.invokeMethod('openLocationSettings');
+  }
+
+  @override
+  Future<void> openBluetoothSettings() async {
+    return await methodChannel.invokeMethod('openBluetoothSettings');
+  }
+
+  @override
+  Future<void> openDataUsageSettings() async {
+    return await methodChannel.invokeMethod('openDataUsageSettings');
+  }
+
+  @override
+  Future<void> openSecuritySettings() async {
+    return await methodChannel.invokeMethod('openSecuritySettings');
+  }
+
+  @override
+  Future<void> openAccessibilitySettings() async {
+    return await methodChannel.invokeMethod('openAccessibilitySettings');
+  }
+
+  @override
+  Future<void> openDisplaySettings() async {
+    return await methodChannel.invokeMethod('openDisplaySettings');
+  }
+
+  @override
+  Future<void> openSoundSettings() async {
+    return await methodChannel.invokeMethod('openSoundSettings');
+  }
+
+  @override
+  Future<void> openVpnSettings() async {
+    return await methodChannel.invokeMethod('openVpnSettings');
+  }
+
+  @override
+  Future<void> openBatteryOptimizationSettings() async {
+    return await methodChannel.invokeMethod('openBatteryOptimizationSettings');
+  }
+
+  @override
+  Future<bool?> isBatteryOptimizationEnabled() async {
+    return await methodChannel.invokeMethod<bool>('isBatteryOptimizationEnabled');
+  }
+
+  @override
+  Future<void> requestDisableBatteryOptimization() async {
+   return await methodChannel.invokeMethod('requestDisableBatteryOptimization');
+  }
   @override
   Future<bool?> checkForSniffingApps(List<String> sniffingAppsToCheck ) async {
     final isEmulator = await methodChannel.invokeMethod<bool>('checkForSniffingApps',sniffingAppsToCheck);

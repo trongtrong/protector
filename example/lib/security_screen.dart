@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_protector/flutter_protector.dart';
 import 'package:flutter_protector_example/security/info_device.dart';
+import 'package:flutter_protector_example/security/info_request.dart';
 import 'package:flutter_protector_example/security/info_result.dart';
 
 class SecurityScreen extends StatefulWidget {
@@ -26,7 +27,9 @@ class _SecurityScreenState extends State<SecurityScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _homeView());
+    return Scaffold(
+
+        body: _homeView());
 
   }
 
@@ -35,7 +38,6 @@ class _SecurityScreenState extends State<SecurityScreen> {
     return 
        Column(
         children: [
-          _header(),
           Expanded(child: _content())
         ],
       );
@@ -45,14 +47,15 @@ class _SecurityScreenState extends State<SecurityScreen> {
   Widget _header(){
     return Container(
       width: double.maxFinite,
-      height: MediaQuery.sizeOf(context).height * .35,
+      height: MediaQuery.sizeOf(context).height * .39,
       padding: EdgeInsets.only(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          Spacer(),
           Container(
-            width: MediaQuery.sizeOf(context).width * .25,
-            height: MediaQuery.sizeOf(context).width * .25,
+            width: MediaQuery.sizeOf(context).width * .30,
+            height: MediaQuery.sizeOf(context).width * .30,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(150)
             ),
@@ -123,7 +126,19 @@ class _SecurityScreenState extends State<SecurityScreen> {
                   countProblem= 0;
                 });
                 Timer(Durations.extralong4, () => init.call(),);
-              }, child: Text("Check Security",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),))
+              }, child: Text("Check Security",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),)),
+          SizedBox(height: 5,),
+          TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.blue
+              ),
+              onPressed: (){}, child: Row(
+            spacing: 5,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.telegram_rounded,size: 25,color: Colors.white,),
+              Text("Support Telegram",style: TextStyle(color: Colors.white),)
+            ],)),
         ],
       ),
     );
@@ -132,7 +147,9 @@ class _SecurityScreenState extends State<SecurityScreen> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 30,),
+          SizedBox(height: 15,),
+          _header(),
+          SizedBox(height: 5,),
         _button(
           call: () {Navigator.push(context, MaterialPageRoute(builder: (context) => InfoResult(),));},
           color: colorPrime,
@@ -202,6 +219,13 @@ class _SecurityScreenState extends State<SecurityScreen> {
             color: Colors.black,
             content: "Show All Device Information",
             title: "Device Info",
+          ),
+
+          _button(
+            call: () {Navigator.push(context, MaterialPageRoute(builder: (context) => InfoRequest(),));},
+            color: Colors.teal,
+            title: "Open Settings",
+            content: "Click to open all settings options",
           ),
 
         ],

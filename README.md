@@ -1,4 +1,4 @@
-# flutter_protector (0.4.0)
+# flutter_protector (0.4.3)
 [![pub package](https://img.shields.io/pub/v/flutter_protector)](https://pub.dev/packages/flutter_protector)
 [![pub points](https://img.shields.io/pub/points/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
 [![likes](https://img.shields.io/pub/likes/flutter_protector)](https://pub.dev/packages/flutter_protector/score)
@@ -15,6 +15,7 @@ This plugin is designed to strengthen your app's security layer through device i
 ---
 
 <div style="display: flex; justify-content: space-between;">
+<img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/sc3.jpg?raw=true" alt="image_demo" width="260" height="600">
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(1).jpg?raw=true" alt="image_demo" width="260" height="600">
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(2).jpg?raw=true" alt="image_demo" width="260" height="600">
 <img src="https://github.com/PuzzleTakX/flutter_protector/blob/master/demo/screen%20(3).jpg?raw=true" alt="image_demo" width="260" height="600">
@@ -70,7 +71,7 @@ To use this plugin, add `flutter_protector` as a dependency in your `pubspec.yam
 
 ```yaml
 dependencies:
-  flutter_protector: ^0.4.0
+  flutter_protector: ^0.4.3
 ```
 
 ### Example

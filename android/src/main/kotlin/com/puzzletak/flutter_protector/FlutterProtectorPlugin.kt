@@ -9,6 +9,8 @@ import android.hardware.SensorManager
 import android.os.Build
 import android.util.Log
 import com.puzzletak.flutter_protector.VpnDetector
+import com.puzzletak.library.CheckItemResult
+import com.puzzletak.library.EmulatorDetailsCallback
 import com.puzzletak.library.EmulatorSuperCheckCallback
 import com.puzzletak.library.PuzzleTakProtectorLib
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -59,6 +61,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
       when (call.method) {
 //        "isEmulatorOld" -> result.success(isEmulatorOld())
         "isEmulatorSuper" -> handleAsyncCall(result) { isEmulatorSuper() }
+        "isEmulatorDetails" -> handleAsyncCall(result) { isEmulatorDetails() }
         "checkResultSecurityInfo" -> handleAsyncCall(result) { checkResultSecurityInfo() }
         "checkResultSecurity" -> handleAsyncCall(result) { checkResultSecurity() }
         "checkForSniffingApps" -> handleSniffingAppsCall(call, result)
@@ -149,6 +152,22 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 override fun findEmulator(emulatorInfo: String) {}
 
                 override fun detailsEmulator(emulatorInfo: MutableMap<String, Any>?) {}
+            })
+        } catch (e: Exception) {
+            continuation.resumeWithException(e)
+        }
+    }
+
+    private suspend fun isEmulatorDetails(): MutableList<MutableMap<String, Any>> = suspendCoroutine { continuation ->
+        try {
+            PuzzleTakProtectorLib.readSysPropertyPTDetailed(context, object : EmulatorDetailsCallback {
+                override fun detailsEmulator(result: MutableList<MutableMap<String, Any>>?) {
+                    if(result != null){
+                        continuation.resume(result)
+                    }
+
+                }
+
             })
         } catch (e: Exception) {
             continuation.resumeWithException(e)

@@ -176,6 +176,11 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
     final isVpnConnected = await methodChannel.invokeMethod<bool>('isVpnConnected');
     return isVpnConnected;
   }
+  @override
+  Future<List<dynamic>?> emulatorDetails() async {
+    final isEmulatorDetails = await methodChannel.invokeMethod<List<dynamic>>('isEmulatorDetails');
+    return isEmulatorDetails;
+  }
 
   @override
   Future<bool?> isProxySet() async {

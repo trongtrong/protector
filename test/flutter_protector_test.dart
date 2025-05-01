@@ -169,6 +169,11 @@ class MockFlutterProtectorPlatform
   Future<void> requestDisableBatteryOptimization() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<List?> emulatorDetails() {
+    throw UnimplementedError();
+  }
 }
 
 void main() {

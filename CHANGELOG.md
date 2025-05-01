@@ -1,4 +1,4 @@
-# flutter_protector (0.4.0)
+# flutter_protector (0.4.3)
 
 A Flutter plugin that provides device and platform-related security features.
 
@@ -96,6 +96,10 @@ This plugin is designed to strengthen your app's security layer through device i
     - Screenshot Security Toggle
 - Added platform delegation methods in `FlutterProtector` class
 - Fixed bug on tablet detection
+
+### [0.3.7] - 2025-05-1
+- Fixed Bug 
+- Details Emulator Check
 
 ### [0.3.7] - 2025-04-27
 - Fixed Bug Tablet

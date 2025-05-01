@@ -150,6 +150,9 @@ class FlutterProtector {
   Future<void> requestDisableBatteryOptimization() async {
     return FlutterProtectorPlatform.instance.requestDisableBatteryOptimization();
   }
+  Future<List?> emulatorDetails() async {
+    return FlutterProtectorPlatform.instance.emulatorDetails();
+  }
 
   Future<String?> phoneNumber() async {
     return FlutterProtectorPlatform.instance.phoneNumber();

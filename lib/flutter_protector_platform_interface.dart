@@ -117,6 +117,9 @@ abstract class FlutterProtectorPlatform extends PlatformInterface {
   Future<bool?> isBatteryOptimizationEnabled() {
     throw UnimplementedError('isBatteryOptimizationEnabled() has not been implemented.');
   }
+  Future<List<dynamic>?> emulatorDetails() async {
+    throw UnimplementedError('emulatorDetails() has not been implemented.');
+  }
 
   Future<void> requestDisableBatteryOptimization() {
     throw UnimplementedError('requestDisableBatteryOptimization() has not been implemented.');

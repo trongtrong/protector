@@ -1,10 +1,13 @@
-# flutter_protector (0.4.6)
+# flutter_protector (0.4.7)
 
 ## 📜 Changelog
 
-### [0.4.6] - 2025-05-1
+### [0.4.7] - 2025-05-4
 - Fixed Bug
-- Update Emulator 
+
+### [0.4.6] - 2025-05-4
+- Fixed Bug
+- Update Emulator
 - Update Core
 
 ### [0.4.3] - 2025-04-29

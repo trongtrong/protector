@@ -1,4 +1,4 @@
-# flutter_protector (0.4.7)
+# flutter_protector (0.5.0)
 
 یک افزونه Flutter برای افزایش امنیت اپلیکیشن از طریق بررسی وضعیت دستگاه و پلتفرم
 
@@ -39,7 +39,7 @@
 
 ```yaml
 dependencies:
-  flutter_protector: ^0.4.7
+  flutter_protector: ^0.5.0
 ```
 
 ### مثال 

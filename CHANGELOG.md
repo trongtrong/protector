@@ -1,7 +1,11 @@
-# flutter_protector (0.4.7)
+# flutter_protector (0.5.0)
 
 ## 📜 Changelog
 
+### [0.4.7] - 2025-05-10
+- Fixed Bug
+- Update Core
+ 
 ### [0.4.7] - 2025-05-4
 - Fixed Bug
 

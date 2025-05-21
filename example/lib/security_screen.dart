@@ -291,12 +291,11 @@ class _SecurityScreenState extends State<SecurityScreen> {
 
 
   init() async {
-    final checkEmulator = await ptx.isEmulatorSuper();
-    final checkBlueStacks = await ptx.isEmulatorSuper();
-    final checkManager = await ptx.isEmulatorSuper();
-    colorPrime = (checkEmulator! || checkBlueStacks! || checkManager!) ? Colors.red : Colors.green;
-    final countProblemData = await ptx.checkResultSecurity();
-    countProblem = countProblemData!;
+    final checkEmulator = await ptx.checkEmu();
+    final checkBlueStacks = await ptx.checkTelephonyManager();
+    final checkManager = await ptx.isBlueStacks();
+    colorPrime = ( checkBlueStacks! || checkManager! || checkEmulator!['IsEmulator']) ? Colors.red : Colors.green;
+    countProblem = checkEmulator!['EmulatorScore']!;
     setState(() {
 
     });

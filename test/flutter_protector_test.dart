@@ -76,7 +76,12 @@ class MockFlutterProtectorPlatform
   }
 
   @override
-  Future<bool?> isEmulatorSuper() {
+  Future<String?> isEmulatorSuper() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Map<String,dynamic>?> checkEmu() {
     throw UnimplementedError();
   }
 

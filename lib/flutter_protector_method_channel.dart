@@ -1,7 +1,10 @@
 
 
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_protector/protector/EmulatorChecker.dart';
 
 import 'flutter_protector_platform_interface.dart';
 
@@ -67,9 +70,15 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
     return isEmulator;
   }
   @override
-  Future<bool?> isEmulatorSuper() async {
-    final isEmulator = await methodChannel.invokeMethod<bool>('isEmulatorSuper');
-    return isEmulator;
+  Future<Map<String,dynamic>?> checkEmu() async {
+    final isEmulator = await methodChannel.invokeMethod<String>('checkEmu');
+    try{
+      final checker = EmulatorChecker(jsonDecode(isEmulator!));
+      final result = checker.analyze();
+      return result;
+    }catch(e){
+      return {"EmulatorScore":20,"IsEmulator":true};
+    }
   }
   @override
   Future<String?> infoEmulatorCheckResult() async {

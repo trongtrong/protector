@@ -69,7 +69,6 @@ class _InfoResultState extends State<InfoResult> {
     });
 
     final pt = await flutterProtector.checkResultSecurityInfo();
-    print(pt);
     result = pt!;
 
     final pt1 = await flutterProtector.getPlatformVersion();
@@ -77,11 +76,11 @@ class _InfoResultState extends State<InfoResult> {
 
     final root = await flutterProtector.isDeviceRooted();
     result["Checked Root Device"] = root;
-
-    final checkEmulator = await flutterProtector.isEmulatorSuper();
-    final checkBlueStacks = await flutterProtector.isEmulatorSuper();
-    final checkManager = await flutterProtector.isEmulatorSuper();
-    result["Checked Emulator Device"] = (checkEmulator! || checkBlueStacks! || checkManager!);
+    final checkEmulator = await flutterProtector.checkEmu();
+    print("++++++++++");
+    final checkBlueStacks = await flutterProtector.isBlueStacks();
+    final checkManager = await flutterProtector.checkTelephonyManager();
+    result["Checked Emulator Device"] = ( checkBlueStacks! || checkManager! || checkEmulator!['IsEmulator']);
 
     final setProxy = await flutterProtector.isProxySet();
     result["Use Proxy Device"] = setProxy;

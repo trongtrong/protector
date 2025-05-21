@@ -1,25 +1,23 @@
 package com.puzzletak.flutter_protector
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.hardware.Sensor
-import android.hardware.SensorManager
 import android.os.Build
 import android.util.Log
-import com.puzzletak.flutter_protector.VpnDetector
-import com.puzzletak.library.CheckItemResult
+import androidx.annotation.RequiresApi
+import androidx.annotation.RequiresPermission
 import com.puzzletak.library.EmulatorDetailsCallback
 import com.puzzletak.library.EmulatorSuperCheckCallback
 import com.puzzletak.library.PuzzleTakProtectorLib
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
-import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-
 import kotlinx.coroutines.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -61,6 +59,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
       when (call.method) {
 //        "isEmulatorOld" -> result.success(isEmulatorOld())
         "isEmulatorSuper" -> handleAsyncCall(result) { isEmulatorSuper() }
+        "checkEmu" -> handleAsyncCall(result) { checkEmu() }
         "isEmulatorDetails" -> handleAsyncCall(result) { isEmulatorDetails() }
         "checkResultSecurityInfo" -> handleAsyncCall(result) { checkResultSecurityInfo() }
         "checkResultSecurity" -> handleAsyncCall(result) { checkResultSecurity() }
@@ -86,7 +85,6 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         "getBuildInfo" -> result.success(getBuildInfo())
         "checkTelephonyManager" -> result.success(checkTelephonyManager())
         "isBlueStacks" -> result.success(isBlueStacks())
-        "phoneNumber" -> result.success(phoneNumber())
         "deviceId" -> result.success(deviceId())
         "isVpnConnected" -> result.success(isVpnConnected())
         "isProxySet" -> result.success(isProxySet())
@@ -142,11 +140,19 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
   }
 
-    private suspend fun isEmulatorSuper(): Boolean = suspendCoroutine { continuation ->
+    private suspend fun checkEmu(): String = suspendCoroutine { continuation ->
         try {
-            PuzzleTakProtectorLib.checkIsRunningInEmulatorPT(context, object : EmulatorSuperCheckCallback {
-                override fun checkEmulator(emulatorInfo: Int) {
-                    continuation.resume(emulatorInfo >= 2)
+          continuation.resume(PuzzleTakProtectorLib.checkRun(context))
+        } catch (e: Exception) {
+            continuation.resumeWithException(e)
+        }
+    }
+    private suspend fun isEmulatorSuper(): String = suspendCoroutine { continuation ->
+        try {
+            PuzzleTakProtectorLib.checkIsRunningInEmulatorPTResult(context, object :
+              EmulatorSuperCheckCallback {
+                override fun checkEmulator(emulatorInfo: String) {
+                    continuation.resume(emulatorInfo)
                 }
 
                 override fun findEmulator(emulatorInfo: String) {}
@@ -160,7 +166,8 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     private suspend fun isEmulatorDetails(): MutableList<MutableMap<String, Any>> = suspendCoroutine { continuation ->
         try {
-            PuzzleTakProtectorLib.readSysPropertyPTDetailed(context, object : EmulatorDetailsCallback {
+            PuzzleTakProtectorLib.readSysPropertyPTDetailed(context, object :
+              EmulatorDetailsCallback {
                 override fun detailsEmulator(result: MutableList<MutableMap<String, Any>>?) {
                     if(result != null){
                         continuation.resume(result)
@@ -176,8 +183,9 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     private suspend fun infoEmulatorCheckResult(): String = suspendCoroutine { continuation ->
         try {
-            PuzzleTakProtectorLib.checkIsRunningInEmulatorPT(context, object : EmulatorSuperCheckCallback {
-                override fun checkEmulator(emulatorInfo: Int) {
+            PuzzleTakProtectorLib.checkIsRunningInEmulatorPTResult(context, object :
+              EmulatorSuperCheckCallback {
+                override fun checkEmulator(emulatorInfo: String) {
 
                 }
 
@@ -202,24 +210,25 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
   private suspend fun checkResultSecurityInfo(): Map<String, Any> = suspendCoroutine { continuation ->
     try {
-      PuzzleTakProtectorLib.checkIsRunningInEmulatorPTResult(context, object : EmulatorSuperCheckCallback {
+      PuzzleTakProtectorLib.checkIsRunningInEmulatorPTResult(context, object :
+        EmulatorSuperCheckCallback {
         override fun detailsEmulator(emulatorInfo: MutableMap<String, Any>?) {
           continuation.resume(emulatorInfo ?: emptyMap())
         }
 
         override fun findEmulator(emulatorInfo: String) {}
 
-        override fun checkEmulator(emulatorInfo: Int) {}
+        override fun checkEmulator(emulatorInfo: String) {}
       })
     } catch (e: Exception) {
       continuation.resumeWithException(e)
     }
   }
 
-  private suspend fun checkResultSecurity(): Int = suspendCoroutine { continuation ->
+  private suspend fun checkResultSecurity(): String = suspendCoroutine { continuation ->
     try {
       PuzzleTakProtectorLib.checkIsRunningInEmulatorPT(context, object : EmulatorSuperCheckCallback {
-        override fun checkEmulator(emulatorInfo: Int) {
+        override fun checkEmulator(emulatorInfo: String) {
           continuation.resume(emulatorInfo)
         }
 
@@ -294,6 +303,8 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
   private fun getBuildInfo(): Map<String, Any?> = EmulatorDetectors.getBuildInfo()
 
+  @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
+  @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
   private fun phoneNumber(): String? = EmulatorDetectors.getPhoneNumber(context)
 
   private fun deviceId(): String? = EmulatorDetectors.getDeviceId(context)

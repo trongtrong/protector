@@ -1,9 +1,14 @@
+@file:Suppress("DEPRECATION")
+
 package com.puzzletak.flutter_protector
 
+import android.Manifest
 import android.content.Context
 import android.os.Build
 import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
+import androidx.annotation.RequiresApi
+import androidx.annotation.RequiresPermission
 import java.io.File
 
 object EmulatorDetectors {
@@ -129,6 +134,8 @@ object EmulatorDetectors {
     /**
      * Get the phone number (if available).
      */
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
+    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
     fun getPhoneNumber(context: Context): String? {
         return try {
             val subscriptionManager = context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE) as SubscriptionManager

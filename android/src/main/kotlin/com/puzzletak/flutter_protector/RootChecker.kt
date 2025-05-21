@@ -1,7 +1,6 @@
 package com.puzzletak.flutter_protector
 
 import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Build
 import android.text.TextUtils
 import java.io.BufferedReader

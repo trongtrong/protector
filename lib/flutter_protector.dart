@@ -37,63 +37,61 @@ class FlutterProtector {
   // }
 
 
-  /// Checks if the device is running on an emulator.
-  /// This method delegates the call to the platform-specific implementation.
-  Future<bool?> isEmulatorSuper() async {
-    return FlutterProtectorPlatform.instance.isEmulatorSuper();
+  Future<Map<String,dynamic>?> checkEmu() async {
+    return await FlutterProtectorPlatform.instance.checkEmu();
   }
 
   Future<bool?> isBlueStacks() async {
-    return FlutterProtectorPlatform.instance.isBlueStacks();
+    return await FlutterProtectorPlatform.instance.isBlueStacks();
   }
 
   Future<bool?> checkTelephonyManager() async {
-    return FlutterProtectorPlatform.instance.checkTelephonyManager();
+    return await FlutterProtectorPlatform.instance.checkTelephonyManager();
   }
 
   Future<String?> infoEmulatorCheckResult() async {
-    return FlutterProtectorPlatform.instance.infoEmulatorCheckResult();
+    return await FlutterProtectorPlatform.instance.infoEmulatorCheckResult();
   }
 
   /// Checks if the device is rooted (Android) or jailbroken (iOS).
   /// This method delegates the call to the platform-specific implementation.
   Future<bool?> isDeviceRooted() async {
-    return FlutterProtectorPlatform.instance.isDeviceRooted();
+    return await FlutterProtectorPlatform.instance.isDeviceRooted();
   }
 
   /// Checks for the presence of known sniffing apps installed on the device.
   /// This method takes a list of package names (Android) or bundle identifiers (iOS) of sniffing apps to check for.
   /// It delegates the call to the platform-specific implementation.
   Future<bool?> checkForSniffingApps(List<String> sniffingAppsToCheck) async {
-    return FlutterProtectorPlatform.instance.checkForSniffingApps(sniffingAppsToCheck);
+    return await FlutterProtectorPlatform.instance.checkForSniffingApps(sniffingAppsToCheck);
   }
   /// check screen shot in app AND RECORDING
   Future<bool?> screenshotSecurity(bool enable) async {
-    return FlutterProtectorPlatform.instance.screenshotSecurity(enable);
+    return await FlutterProtectorPlatform.instance.screenshotSecurity(enable);
   }
 
   /// Checks if a VPN is currently connected on the device.
   /// This method delegates the call to the platform-specific implementation.
   Future<bool?> isVpnConnected() async {
-    return FlutterProtectorPlatform.instance.isVpnConnected();
+    return await FlutterProtectorPlatform.instance.isVpnConnected();
   }
 
   /// Checks if a enable developer option in android
   Future<bool?> isDeveloperOptionsEnabled() async {
-    return FlutterProtectorPlatform.instance.isDeveloperOptionsEnabled();
+    return await FlutterProtectorPlatform.instance.isDeveloperOptionsEnabled();
   }
 
   Future<Map<String, dynamic>?> checkResultSecurityInfo() async {
-    return FlutterProtectorPlatform.instance.checkResultSecurityInfo();
+    return await FlutterProtectorPlatform.instance.checkResultSecurityInfo();
   }
   Future<int?> checkResultSecurity() async {
-    return FlutterProtectorPlatform.instance.checkResultSecurity();
+    return await FlutterProtectorPlatform.instance.checkResultSecurity();
   }
 
   /// Checks if a proxy is currently set on the device.
   /// This method delegates the call to the platform-specific implementation.
   Future<bool?> isProxySet() async {
-    return FlutterProtectorPlatform.instance.isProxySet();
+    return await FlutterProtectorPlatform.instance.isProxySet();
   }
 
   /// Retrieves the local IP address of the device.

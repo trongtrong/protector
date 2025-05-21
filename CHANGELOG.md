@@ -1,6 +1,32 @@
-# flutter_protector (0.5.0)
+# flutter_protector (0.6.0)
 
 ## 📜 Changelog
+
+
+## [0.6.0] - 2025-05-21
+
+### Added
+- New method: `checkEmu` for improved emulator result mapping. 
+
+### Changed
+- Updated core logic for better performance and reliability.
+- Improved security in emulator detection scoring system.
+- Data structure updated to strengthen protection against reverse engineering.
+- Encrypted data communication between Android and platform channels.
+
+### Removed
+- Deprecated method `isEmulatorSuper` has been removed. 
+
+### Fixed
+- Minor bugs resolved to enhance stability.
+
+### Security
+- Enhanced protection to restrict code visibility during reverse engineering attempts.
+
+
+### [0.5.0] - 2025-05-10
+- Fixed Bug
+- Update Core
 
 ### [0.4.7] - 2025-05-10
 - Fixed Bug

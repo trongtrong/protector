@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
-import androidx.core.net.toUri
 
 class BatteryOptimizationHelper {
 
@@ -36,7 +35,7 @@ class BatteryOptimizationHelper {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 val intent = Intent()
                 intent.action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-                intent.data = ("package:" + context.packageName).toUri()
+                intent.data = Uri.parse(("package:" + context.packageName))
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(intent)
             } else {

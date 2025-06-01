@@ -95,8 +95,11 @@ class EmulatorChecker {
 
   CheckResult checkFeaturesByBaseBand() {
     final baseBand = properties['BaseBand']?.toString();
+    final manufacturer = properties['Manufacturer']?.toString().toLowerCase();
+    if(manufacturer == "Xiaomi".toLowerCase()){
+      return CheckResult(RESULT_MAYBE_EMULATOR, null);
+    }
     if (baseBand == null) return CheckResult(RESULT_EMULATOR, null);
-
     if (baseBand.contains('1.0.0.0')) {
       return CheckResult(RESULT_EMULATOR, baseBand);
     }
@@ -130,7 +133,12 @@ class EmulatorChecker {
       resultMap[entry.key] = entry.value.value;
       int valueScore = evaluateCheckResult(entry.value);
       if (entry.key == "BaseBand") {
-        score += valueScore * 4; // weighted
+        final manufacturer = properties['Manufacturer']?.toString().toLowerCase();
+        if(manufacturer == "Xiaomi".toLowerCase()){
+
+        }else{
+          score += valueScore * 4; // weighted
+        }
       } else {
         score += valueScore;
       }

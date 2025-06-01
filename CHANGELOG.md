@@ -1,9 +1,13 @@
-# flutter_protector (0.6.0)
+# flutter_protector (0.6.3)
 
 ## 📜 Changelog
 
+### [0.6.3] - 2025-06-01
+- Fixed Bug
+- Fix Tablet Xiaomi
 
 ## [0.6.0] - 2025-05-21
+
 
 ### Added
 - New method: `checkEmu` for improved emulator result mapping. 

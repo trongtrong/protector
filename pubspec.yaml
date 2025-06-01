@@ -1,6 +1,6 @@
 name: flutter_protector
 description: A Flutter plugin that provides device and platform-related security features. # Improve the description
-version: 0.6.0 # Use semantic versioning (major.minor.patch+build_number)
+version: 0.6.3 # Use semantic versioning (major.minor.patch+build_number)
 homepage: https://github.com/PuzzleTakX/flutter_protector # Add your repo URL
 repository: https://github.com/PuzzleTakX/flutter_protector
 issue_tracker: https://github.com/PuzzleTakX/flutter_protector/issues # Optional: Link to your issue tracker

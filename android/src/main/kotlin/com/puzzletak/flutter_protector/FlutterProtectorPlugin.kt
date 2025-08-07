@@ -57,43 +57,19 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     try {
       when (call.method) {
-//        "isEmulatorOld" -> result.success(isEmulatorOld())
-        "isEmulatorSuper" -> handleAsyncCall(result) { isEmulatorSuper() }
-        "checkEmu" -> handleAsyncCall(result) { checkEmu() }
-        "isEmulatorDetails" -> handleAsyncCall(result) { isEmulatorDetails() }
-        "checkResultSecurityInfo" -> handleAsyncCall(result) { checkResultSecurityInfo() }
-        "checkResultSecurity" -> handleAsyncCall(result) { checkResultSecurity() }
-        "checkForSniffingApps" -> handleSniffingAppsCall(call, result)
-        "screenshotSecurity" -> handleScreenshotSecurityCall(call, result)
-        "isDeviceRooted" -> result.success(isDeviceRooted())
-        "openDeveloperOption" -> result.success(openDeveloperOption())
-        "openLocationSettings" -> result.success(openLocationSettings())
-        "openBluetoothSettings" -> result.success(openBluetoothSettings())
-        "openDataUsageSettings" -> result.success(openDataUsageSettings())
-        "openSecuritySettings" -> result.success(openSecuritySettings())
-        "openAccessibilitySettings" -> result.success(openAccessibilitySettings())
-        "openDisplaySettings" -> result.success(openDisplaySettings())
-        "openSoundSettings" -> result.success(openSoundSettings())
-        "openVpnSettings" -> result.success(openVpnSettings())
-        "openBatteryOptimizationSettings" -> result.success(openBatteryOptimizationSettings())
-        "isBatteryOptimizationEnabled" -> result.success(isBatteryOptimizationEnabled())
-        "requestDisableBatteryOptimization" -> {
-              requestDisableBatteryOptimization()
-              result.success(null)
-          }
-        "infoEmulatorCheckResult" -> handleAsyncCall(result) { infoEmulatorCheckResult() }
-        "getBuildInfo" -> result.success(getBuildInfo())
-        "checkTelephonyManager" -> result.success(checkTelephonyManager())
-        "isBlueStacks" -> result.success(isBlueStacks())
-        "deviceId" -> result.success(deviceId())
-        "isVpnConnected" -> result.success(isVpnConnected())
-        "isProxySet" -> result.success(isProxySet())
-        "isDeveloperOptionsEnabled" -> result.success(isDeveloperOptionsEnabled())
-        "getLocalIpAddress" -> result.success(getLocalIpAddress())
-        "isPublicIP" -> handleIpCheck(call, result)
-        "isVpnUsingNetworkInterface" -> result.success(isVpnUsingNetworkInterface())
-        "getPlatformVersion" -> result.success("Android ${Build.VERSION.RELEASE}")
+        "a" -> EmulatorCheckHandlerA().run(context, result)
+        "a1" -> CheckEmu().run(context, result)
+        "a2" -> handleAsyncCall(result) { isEmulatorDetails() }
+        "b" -> handleAsyncCall(result) { checkResultSecurityInfo() }
+        "b1" -> handleAsyncCall(result) { checkResultSecurity() }
+        "c" -> handleSniffingAppsCall(call, result)
+        "d" -> result.success(isDeviceRooted())
+        "e" -> handleAsyncCall(result) { infoEmulatorCheckResult() }
+        "e1" -> result.success(isBlueStacks())
+        "f1" -> result.success(isProxySet())
+        "g1" -> result.success(isDeveloperOptionsEnabled())
         else -> result.notImplemented()
+
       }
     } catch (e: Exception) {
       result.error("UNEXPECTED_ERROR", "An unexpected error occurred: ${e.message}", null)

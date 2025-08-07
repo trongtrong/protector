@@ -71,7 +71,7 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
   }
   @override
   Future<Map<String,dynamic>?> checkEmu() async {
-    final isEmulator = await methodChannel.invokeMethod<String>('checkEmu');
+    final isEmulator = await methodChannel.invokeMethod<String>('a1');
     try{
       final checker = EmulatorChecker(jsonDecode(isEmulator!));
       final result = checker.analyze();

@@ -41,6 +41,8 @@ class _SecurityScreenState extends State<SecurityScreen> {
 
   init() async {
     final checkEmulator = await ptx.checkEmu();
+    final isDeveloper = await ptx.isDeveloperOptionsEnabled();
+    final isProxy = await ptx.isProxySet();
     // final checkBlueStacks = await ptx.checkTelephonyManager();
     // final checkManager = await ptx.isBlueStacks();
     // colorPrime =
@@ -49,7 +51,8 @@ class _SecurityScreenState extends State<SecurityScreen> {
     //         : Colors.green;
     // countProblem = checkEmulator!['EmulatorScore']!;
     setState(() {
-      textPrivate = checkEmulator.toString();
+      textPrivate =
+          '$checkEmulator\nIsDeveloperOptionsEnabled: $isDeveloper\nIsProxySet: $isProxy';
     });
 
     print('checkEmulator. ${checkEmulator}');

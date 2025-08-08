@@ -12,7 +12,7 @@ import 'flutter_protector_platform_interface.dart';
 class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('flutter_protector');
+  final methodChannel = const MethodChannel('connectivity');
 
 
   @override
@@ -23,7 +23,7 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
 
   @override
   Future<bool?> isDeveloperOptionsEnabled() async {
-    final check = await methodChannel.invokeMethod<bool>('isDeveloperOptionsEnabled');
+    final check = await methodChannel.invokeMethod<bool>('g1');
     return check;
   }
   @override
@@ -193,7 +193,7 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
 
   @override
   Future<bool?> isProxySet() async {
-    final isProxySet = await methodChannel.invokeMethod<bool>('isProxySet');
+    final isProxySet = await methodChannel.invokeMethod<bool>('f1');
     return isProxySet;
   }
 

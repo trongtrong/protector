@@ -56,7 +56,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 "a" -> EmulatorCheckHandlerA().run(context, result)
                 "a1" -> CheckEmu().run(context, result)
                 "c" -> handleSniffingAppsCall(call, result)
-                "d" -> result.success(isDeviceRooted())
+                "d" -> result.success(RootChecker.isDeviceRooted(context))
                 "f1" -> result.success(SecurityFactory().createProxyChecker().isProxyDetected())
                 "g1" -> result.success(SecurityFactory().createDevChecker(context).isDeveloperDetected())
                 else -> result.notImplemented()
@@ -100,8 +100,6 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             }
         }
     }
-
-    private fun isDeviceRooted(): Boolean = RootChecker.isDeviceRooted(context)
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)

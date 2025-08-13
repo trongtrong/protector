@@ -106,7 +106,7 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
   }
   @override
   Future<bool?> isDeviceRooted() async {
-    final isEmulator = await methodChannel.invokeMethod<bool>('isDeviceRooted');
+    final isEmulator = await methodChannel.invokeMethod<bool>('d');
     return isEmulator;
   }
 

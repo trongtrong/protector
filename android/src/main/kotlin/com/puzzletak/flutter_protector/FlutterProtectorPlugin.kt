@@ -85,7 +85,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         if (sniffingPackages != null && sniffingPackages.all { it is String }) {
             result.success(checkForSniffingApps(sniffingPackages.filterIsInstance<String>().toTypedArray()))
         } else {
-            result.error("INVALID_ARGS", "Sniffing packages list is required and should contain only strings", null)
+            result.error("INVALID_ARGS", "eror", null)
         }
     }
 

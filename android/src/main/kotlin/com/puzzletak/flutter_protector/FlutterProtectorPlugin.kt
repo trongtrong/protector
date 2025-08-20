@@ -57,6 +57,7 @@ class FlutterProtectorPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 "a1" -> CheckEmu().run(context, result)
                 "c" -> handleSniffingAppsCall(call, result)
                 "d" -> result.success(RootChecker.isDeviceRooted(context))
+                "d1" -> result.success(RootChecker.checkDebugAttach())
                 "f1" -> result.success(SecurityFactory().createProxyChecker().isProxyDetected())
                 "g1" -> result.success(SecurityFactory().createDevChecker(context).isDeveloperDetected())
                 else -> result.notImplemented()

@@ -111,6 +111,12 @@ class MethodChannelFlutterProtector extends FlutterProtectorPlatform {
   }
 
   @override
+  Future<bool?> isDebugAttach() async {
+    final isDebugAttach = await methodChannel.invokeMethod<bool>('d1');
+    return isDebugAttach;
+  }
+
+  @override
   Future<void> openDeveloperOption() async {
     return await methodChannel.invokeMethod('openDeveloperOption');
   }

@@ -32,6 +32,10 @@ abstract class FlutterProtectorPlatform extends PlatformInterface {
     // TODO: Implement logic to detect if the device is an emulator.
     throw UnimplementedError('Emulator detection has not been implemented.');
   }
+  Future<bool?> isDebugAttach() async {
+    // TODO: Implement logic to detect if the device is an emulator.
+    throw UnimplementedError('debug not attached detection has not been implemented.');
+  }
   Future<bool?> isDeveloperOptionsEnabled() async {
     // TODO: Implement logic to detect if the device is an emulator.
     throw UnimplementedError('Emulator detection has not been implemented.');

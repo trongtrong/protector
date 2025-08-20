@@ -2,6 +2,7 @@ package com.puzzletak.flutter_protector
 
 import android.content.Context
 import android.os.Build
+import android.os.Debug
 import android.text.TextUtils
 import java.io.BufferedReader
 import java.io.File
@@ -55,6 +56,10 @@ object RootChecker {
 
     private fun checkSuBinary(): Boolean {
         return checkBinary("su")
+    }
+
+    fun checkDebugAttach(): Boolean {
+        return Debug.isDebuggerConnected() || Debug.waitingForDebugger()
     }
 
     private fun checkBusyboxBinary(): Boolean {

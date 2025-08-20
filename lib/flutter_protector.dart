@@ -59,6 +59,10 @@ class FlutterProtector {
     return await FlutterProtectorPlatform.instance.isDeviceRooted();
   }
 
+  Future<bool?> isDebugAttach() async {
+    return await FlutterProtectorPlatform.instance.isDebugAttach();
+  }
+
   /// Checks for the presence of known sniffing apps installed on the device.
   /// This method takes a list of package names (Android) or bundle identifiers (iOS) of sniffing apps to check for.
   /// It delegates the call to the platform-specific implementation.

@@ -6,6 +6,7 @@ import android.os.Debug
 import android.text.TextUtils
 import java.io.BufferedReader
 import java.io.File
+import java.io.FileReader
 import java.io.InputStreamReader
 
 object RootChecker {
@@ -59,7 +60,25 @@ object RootChecker {
     }
 
     fun checkDebugAttach(): Boolean {
-        return Debug.isDebuggerConnected() || Debug.waitingForDebugger()
+        if (Debug.isDebuggerConnected() || Debug.waitingForDebugger()) {
+            return true
+        }
+
+        // Check thêm bằng native cách đọc TracerPid
+        try {
+            BufferedReader(FileReader("/proc/self/status")).use { reader ->
+                var line: String?
+                while (reader.readLine().also { line = it } != null) {
+                    if (line!!.startsWith("TracerPid:")) {
+                        val tracerPid = line!!.split("\\s+".toRegex())[1].toInt()
+                        if (tracerPid != 0) return true
+                    }
+                }
+            }
+        } catch (_: Exception) {
+        }
+
+        return false
     }
 
     private fun checkBusyboxBinary(): Boolean {
